@@ -67,7 +67,7 @@ export default function Nav() {
             background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
           }}
         >
-          Let's Talk
+          Let&apos;s Talk
         </button>
 
         {/* Mobile hamburger */}
@@ -106,7 +106,7 @@ export default function Nav() {
                 background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
               }}
             >
-              Let's Talk
+              Let&apos;s Talk
             </button>
           </motion.div>
         )}
