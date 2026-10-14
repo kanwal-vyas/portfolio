@@ -543,7 +543,60 @@ graph TD
   - `node ./node_modules/next/dist/bin/next build`: Passed (clean production build).
   - Browser subagent visual evaluation: Passed across 1536x864, 1024x768, 390x844, 320x568 viewports with zero horizontal overflow.
 - **Status**: **Completed (Stage 2.1)**.
-- **Stage 3 Prerequisites**: Independent verification gate for TaxFlow and Cyber Crime Analytics codebases remains mandatory prior to authoring or publishing case studies.
+- **Commit**: `e98f744`.
+
+---
+
+### Stage 2.2: Experimental Art Direction & Immersive Homepage Transformation
+- **Objective**: Transform the Tropical Anomaly portfolio from a polished editorial monograph into an experimental, visually immersive, art-directed digital experience inspired by contemporary independent graphic design, physical-object compositions, and creative coding.
+- **Reference Analysis & Visual Principles Extracted**:
+  - *Current Portfolio Baseline*: Identified the notebook-like features to dismantle: the headline-and-panel split, the rigid 3-row specification panel, repeated outlines/borders, and restrained colour usage.
+  - *Desired Reference Principles*:
+    1. *Expansive Colour Field*: Dominate the opening viewport with vivid **Guava Punch (`#FF5B4D`)**, breaking out of small bordered containers.
+    2. *Colossal Display Typography*: Oversized Newsreader lettering ("Technology. Data. Decision Making.") with intentional viewport edge cropping, scale shifts, and an acidic Sour Pistachio highlight slab.
+    3. *Layered Physical-Digital Assemblage*: Dismantle the structured Tri-Axis table in favor of floating, overlapping objects that convey technical authority and tangible craft.
+    4. *Unconventional Compositional Horizon*: Sculptural transition cut from Guava Punch into Peach Paper (`#FFF0D8`) for analytical reading sections.
+    5. *Integrated Masthead*: Nav seamlessly blends with the Guava Punch opening field at the top, transitioning smoothly into a backdrop-blurred Peach Paper bar on scroll.
+- **Scope Included**:
+  1. Re-engineered `src/components/sections/Hero.tsx`:
+     - Full-bleed Guava Punch canvas (`#FF5B4D`) with subtle radial technical coordinate grid and warm chromatic halos.
+     - Colossal, edge-cropped display typography: `Technology.` in heavy Newsreader serif; `Data.` in italic with an acidic Sour Pistachio backing slab; `Decision Making.` as an architectural base.
+     - Physical-digital assemblage replacing the rigid Tri-Axis panel:
+       - *Layer 1*: Kinetic rotating Cryptographic State Wafer (SVG vector sculpture with cardinal markers, concentric angle ticks, and inner hexagonal core).
+       - *Layer 2*: Tilted Monograph Card (`-2.5deg` tilt, Blackberry Ink `#29232F` background, Peach Paper `#FFF0D8` text with 13.60:1 AAA contrast, hard brutalist drop shadow).
+       - *Layer 3*: Physical stamp tape label (`+3deg` offset angle in Sour Pistachio: `PROVABLE STATE`).
+     - Preserved authentic, verified positioning: BTech CSE (Cybersecurity Specialization) + parallel BS in Data Science at IIT Madras.
+     - Brutalist tactile action buttons: "Explore Flagship Systems", "Decision Journal", and "Direct Dispatch".
+     - Transitional horizon: Geometric cut and editorial journey bar leading into Section 01 (`#philosophy`).
+  2. Updated `src/components/ui/Nav.tsx`:
+     - Seamless integration with Guava Punch hero when unscrolled (`bg-[var(--color-guava)]`, Blackberry Ink text, Sour Pistachio status dot).
+     - Smooth scroll transition to `bg-[var(--color-paper)]/95` with backdrop blur when scrolled.
+  3. Updated `src/app/design-specimen/page.tsx`:
+     - Reflected Stage 2.2 art direction specimens and verified contrast metrics.
+- **Dependencies Added**: None (zero additional packages).
+- **Files Actually Changed**:
+  - `src/components/sections/Hero.tsx`
+  - `src/components/ui/Nav.tsx`
+  - `src/app/design-specimen/page.tsx`
+  - `PROJECT_PLAN.md`
+- **Acceptance Criteria**:
+  - [x] Expansive Guava Punch color field dominates opening viewport.
+  - [x] Colossal typography with intentional scale and edge bleed implemented.
+  - [x] Rigid 3-row panel dismantled and replaced with kinetic state wafer and tilted monograph card.
+  - [x] Masthead seamlessly integrated and transitions on scroll.
+  - [x] Verified positioning (CSE Cybersecurity + IIT Madras BS) strictly preserved.
+  - [x] Full `prefers-reduced-motion` safety implemented (rotation, parallax, and translation disabled for reduced motion).
+  - [x] Zero horizontal overflow verified across 1536px, 1024px, 390px, and 320px viewports.
+  - [x] WCAG 2.2 AA contrast verified across all newly introduced combinations (Ink on Guava: 4.98:1 AA; Peach on Ink: 13.60:1 AAA; Ink on Pistachio: 11.99:1 AAA).
+- **Verification Commands Executed**:
+  - `npm run test:content`: Passed (0 failures).
+  - `node ./node_modules/typescript/bin/tsc --noEmit`: Passed (0 type errors).
+  - `npm run lint`: Passed (0 warnings, 0 errors).
+  - `node scripts/verify-contrast.mjs`: Passed (all contrast pairs verified).
+  - `node ./node_modules/next/dist/bin/next build`: Passed (clean production build).
+  - Browser subagent visual evaluation: Passed across 1536x864, 1024x768, 390x844, 320x568 viewports with screenshot capture and zero horizontal scroll.
+- **Status**: **Completed (Stage 2.2)**.
+- **Stage 3 Boundary**: Stage 3 remains unauthorized and has not started. All project case studies and verification statuses remain strictly untouched.
 
 ---
 
@@ -701,30 +754,27 @@ The active portfolio repository is an independent, original work:
 | :--- | :--- | :---: | :---: | :---: |
 | **Stage 0** | Planning, Baseline Audit & Readiness Review | **Completed (Planning Only)** | 2026-10-14 | Baseline `69b61ee` |
 | **Stage 1** | Content Model & Design System Prep | **Completed (Verified)** | 2026-10-14 | `c017665` |
-| **Stage 1.1** | Contrast Correction & Plan Synchronization | **Completed (Remediation)** | 2026-10-14 | Pending Commit |
-| **Stage 2** | Masthead, Global Navigation & Hero | **Ready for Authorization** | — | — |
-| **Stage 3** | Flagship Systems & Case Studies | Blocked by Stage 2 | — | — |
+| **Stage 1.1** | Contrast Correction & Plan Synchronization | **Completed (Remediation)** | 2026-10-14 | `6687f47` |
+| **Stage 2** | Tropical Anomaly Design System & Hero | **Completed (Verified)** | 2026-10-14 | `871b680` |
+| **Stage 2.1** | Living Motion & Spatial Composition | **Completed (Verified)** | 2026-10-14 | `e98f744` |
+| **Stage 2.2** | Experimental Art Direction & Immersive Transformation | **Completed (Verified)** | 2026-10-14 | Pending Commit |
+| **Stage 3** | Flagship Systems & Case Studies | **Preconditions Ready; Awaiting Authorization** | — | — |
 | **Stage 4** | Decision Journal & Analytical Essays | Blocked by Stage 3 | — | — |
 | **Stage 5** | Academic Trajectory & Verified Contact | Blocked by Stage 4 | — | — |
 | **Stage 6** | Comprehensive Verification & Audit | Blocked by Stage 5 | — | — |
 
 ### 12.2 Readiness Determination
-- **Stage 1 & 1.1 Status**: **STAGE 1 & 1.1 COMPLETE**.
+- **Stage 2.2 Status**: **STAGE 2.2 COMPLETE AND VERIFIED**.
 - **Evidence**:
-  - Root `data/` safely preserved untouched; zero unique content lost.
-  - Strictly typed schemas established in `src/data/types.ts` and reconciled across all data files.
-  - Automated validation suite `scripts/validate-content.mjs` passing with 0 failures (`npm run test:content`).
-  - Direction A (Botanical Ink) semantic token architecture active in `src/app/globals.css` and `tailwind.config.ts`.
-  - Independent contrast recalculation confirmed:
-    - Text Primary: **16.48:1** (AAA)
-    - Text Secondary: **7.40:1** (AAA)
-    - Text Muted: **4.90:1** (AA)
-    - Accent Primary (Juniper Moss): **6.82:1** (AA)
-    - Accent Secondary (Bramble Rust): **6.23:1** (AA)
-    - Decorative Container Border (`--border-strong`): **1.52:1** (Decorative only)
-    - Interactive Control Boundary (`--border-control`): **3.32:1** on canvas `#F7F6F1`, **3.40:1** on `#FFFFFF` (Passes WCAG 2.2 SC 1.4.11 ≥ 3.0:1)
-  - Editorial typography (`Newsreader` + `Plus Jakarta Sans` + `JetBrains Mono`) active in `src/app/layout.tsx`.
+  - Full-bleed Guava Punch (`#FF5B4D`) canvas deployed with colossal Newsreader typography and Sour Pistachio highlight slab.
+  - Rigid 3-row panel dismantled and replaced with kinetic rotating cryptographic wafer and tilted monograph card (`#29232F` background, `#FFF0D8` text with 13.60:1 AAA contrast).
+  - Nav blends seamlessly into Guava Punch when unscrolled, transitioning into backdrop-blurred Peach Paper on scroll.
+  - Verified positioning (BTech CSE Cybersecurity + IIT Madras BS in Data Science) strictly preserved with zero fabricated metrics or unverified claims.
+  - Browser subagent automated visual verification completed across all four target viewports (1536x864, 1024x768, 390x844, 320x568) with zero horizontal overflow.
+  - Content validation suite `scripts/validate-content.mjs` passed with 0 failures (`npm run test:content`).
+  - TypeScript compiler (`tsc --noEmit`) and ESLint (`npm run lint`) passed with 0 errors and 0 warnings.
+  - Contrast audit (`node scripts/verify-contrast.mjs`) passed with full WCAG 2.2 AA / AAA compliance.
   - Production build (`npm run build`) succeeded with 0 errors.
 
 ### 12.3 Recommended Immediate Next Action
-Await user review and explicit authorization to proceed with **Stage 2: Masthead, Global Navigation & Editorial Hero**.
+Await user review and authorization for **Stage 3: Flagship Systems & Engineering Case Studies**, preceded by independent verification of TaxFlow and Cyber Crime Analytics repositories.

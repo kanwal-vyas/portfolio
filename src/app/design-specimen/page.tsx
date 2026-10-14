@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Design Token & Motion Specimen — Tropical Anomaly (Stage 2.1)",
-  description: "Isolated specimen for evaluating Tropical Anomaly design tokens, typography, motion primitives, and contrast.",
+  title: "Design Token & Composition Specimen — Tropical Anomaly (Stage 2.2)",
+  description: "Isolated specimen for evaluating Tropical Anomaly design tokens, colossal typography, physical-object composition, and contrast.",
 };
 
 export default function DesignSpecimenPage() {
@@ -15,14 +15,14 @@ export default function DesignSpecimenPage() {
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 bg-[var(--color-guava)] rounded-full animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-guava-deep)] font-bold">
-                Stage 2.1 Design &amp; Motion Specimen
+                Stage 2.2 Art Direction Specimen
               </span>
             </div>
             <h1 className="font-serif text-3xl md:text-5xl font-semibold tracking-tight mt-2 text-[var(--text-primary)]">
-              Tropical Anomaly &amp; Motion System
+              Tropical Anomaly &amp; Experimental Composition
             </h1>
             <p className="font-mono text-xs text-[var(--text-secondary)] mt-1">
-              Expressive colour, masked typography reveals, open editorial triptychs, and WCAG 2.2 contrast compliance.
+              Guava Punch color fields, colossal edge-cropped typography, physical-digital assemblage, and WCAG 2.2 contrast compliance.
             </p>
           </div>
           <div className="flex items-center gap-3">

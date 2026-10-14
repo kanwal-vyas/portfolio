@@ -91,10 +91,10 @@ export default function Nav() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-[var(--color-paper)]/95 backdrop-blur-md shadow-sm border-b border-[var(--border-subtle)]"
-          : "bg-[var(--color-paper)] border-b border-[var(--border-subtle)]"
+          : "bg-[var(--color-guava)] border-b border-[rgba(41,35,47,0.25)]"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-3.5 sm:py-4 flex items-center justify-between">
         {/* Typographic Personal Wordmark & Subtitle */}
         <div className="flex items-center gap-4">
           <a
@@ -107,11 +107,13 @@ export default function Nav() {
             aria-label="Kanwal Vyas — Return to top"
           >
             <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl md:text-[1.75rem] font-bold tracking-tight text-[var(--color-ink)] group-hover:text-[var(--color-guava-deep)] transition-colors">
+              <span className="font-serif text-2xl md:text-[1.75rem] font-bold tracking-tight text-[var(--color-ink)] group-hover:text-[var(--color-ink)] transition-colors">
                 Kanwal Vyas
               </span>
               <motion.span
-                className="inline-block w-2.5 h-2.5 rounded-full bg-[var(--color-guava)]"
+                className={`inline-block w-2.5 h-2.5 rounded-full border border-[var(--color-ink)] ${
+                  scrolled ? "bg-[var(--color-guava)]" : "bg-[var(--color-pistachio)]"
+                }`}
                 animate={
                   shouldReduceMotion
                     ? undefined
@@ -120,7 +122,11 @@ export default function Nav() {
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
             </div>
-            <span className="hidden sm:inline-block font-sans text-[11px] tracking-wide text-[var(--text-secondary)] font-medium">
+            <span
+              className={`hidden sm:inline-block font-sans text-[11px] tracking-wide font-bold ${
+                scrolled ? "text-[var(--text-secondary)]" : "text-[var(--color-ink)]"
+              }`}
+            >
               Cybersecurity &middot; IIT Madras BS in Data Science
             </span>
           </a>
@@ -132,40 +138,49 @@ export default function Nav() {
           aria-label="Primary navigation"
         >
           <ul className="flex items-center gap-6 lg:gap-8 list-none m-0 p-0">
-            {navItems.map((item) => (
-              <li key={item.href} className="relative">
-                {item.isExternalRoute ? (
-                  <Link
-                    href={item.href}
-                    className="group relative inline-flex items-center text-sm font-sans font-medium text-[var(--text-secondary)] hover:text-[var(--color-ink)] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] rounded"
-                  >
-                    <span>{item.label}</span>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-guava)] transition-all duration-300 group-hover:w-full" />
-                  </Link>
-                ) : (
-                  <button
-                    onClick={() => handleNavClick(item.href)}
-                    className={`group relative inline-flex items-center text-sm font-sans py-1 bg-transparent border-none cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] rounded ${
-                      activeSection === item.href
-                        ? "text-[var(--color-ink)] font-bold"
-                        : "text-[var(--text-secondary)] font-medium hover:text-[var(--color-ink)]"
-                    }`}
-                    aria-current={activeSection === item.href ? "true" : undefined}
-                  >
-                    <span>{item.label}</span>
-                    {activeSection === item.href ? (
-                      <motion.span
-                        layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-guava)]"
-                        transition={{ duration: 0.3, ease: easeEditorial }}
-                      />
-                    ) : (
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--border-strong)] transition-all duration-200 group-hover:w-full" />
-                    )}
-                  </button>
-                )}
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href;
+              return (
+                <li key={item.href} className="relative">
+                  {item.isExternalRoute ? (
+                    <Link
+                      href={item.href}
+                      className={`group relative inline-flex items-center text-sm font-sans font-bold transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] rounded ${
+                        scrolled
+                          ? "text-[var(--text-secondary)] hover:text-[var(--color-ink)]"
+                          : "text-[var(--color-ink)] hover:text-[var(--color-ink)]"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-ink)] transition-all duration-300 group-hover:w-full" />
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => handleNavClick(item.href)}
+                      className={`group relative inline-flex items-center text-sm font-sans py-1 bg-transparent border-none cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] rounded ${
+                        isActive
+                          ? "text-[var(--color-ink)] font-extrabold"
+                          : scrolled
+                          ? "text-[var(--text-secondary)] font-medium hover:text-[var(--color-ink)]"
+                          : "text-[var(--color-ink)] font-bold hover:text-[var(--color-ink)]"
+                      }`}
+                      aria-current={isActive ? "true" : undefined}
+                    >
+                      <span>{item.label}</span>
+                      {isActive ? (
+                        <motion.span
+                          layoutId="activeNavIndicator"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-ink)]"
+                          transition={{ duration: 0.3, ease: easeEditorial }}
+                        />
+                      ) : (
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-ink)] transition-all duration-200 group-hover:w-full" />
+                      )}
+                    </button>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           {/* Connect Action Button with Tactile Hover */}
@@ -191,7 +206,7 @@ export default function Nav() {
           <button
             ref={menuButtonRef}
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2.5 rounded-md text-[var(--color-ink)] bg-[var(--bg-surface-subtle)] border border-[var(--border-control)] hover:bg-[var(--color-pistachio)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+            className="p-2.5 rounded-md text-[var(--color-ink)] bg-[var(--color-pistachio)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:bg-[var(--color-mango)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
