@@ -1,33 +1,39 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Design Token Specimen — Editorial Technologist (Stage 1)",
-  description: "Isolated specimen for evaluating design tokens, typography, and contrast.",
+  title: "Design Token Specimen — Tropical Anomaly (Stage 2)",
+  description: "Isolated specimen for evaluating Tropical Anomaly design tokens, typography, and contrast.",
 };
 
 export default function DesignSpecimenPage() {
   return (
-    <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] px-6 py-16 md:px-16 lg:px-24">
+    <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] px-6 py-12 md:px-16 lg:px-24">
       {/* Masthead Header / Specimen Label */}
-      <header className="border-b border-[var(--border-subtle)] pb-8 mb-16">
+      <header className="border-b border-[var(--border-subtle)] pb-8 mb-12">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-semibold">
-              Stage 1 Design Token Specimen
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 bg-[var(--color-guava)] rounded-full animate-pulse" />
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-guava-deep)] font-bold">
+                Stage 2 Design Token Specimen
+              </span>
+            </div>
             <h1 className="font-serif text-3xl md:text-5xl font-semibold tracking-tight mt-2 text-[var(--text-primary)]">
-              Direction A: Botanical Ink
+              Tropical Anomaly Palette
             </h1>
+            <p className="font-mono text-xs text-[var(--text-secondary)] mt-1">
+              Expressive colour, unexpected combinations, and controlled editorial rhythm.
+            </p>
           </div>
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-[var(--accent-primary-surface)] text-[var(--accent-primary)] border border-[var(--border-subtle)]">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-[var(--color-pistachio)] text-[var(--color-ink)] border border-[var(--border-control)]">
               WCAG 2.2 AA Verified
             </span>
             <Link
               href="/"
-              className="text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] underline underline-offset-4"
+              className="text-xs font-mono font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] underline underline-offset-4"
             >
-              Return to Site
+              &larr; Return to Portfolio
             </Link>
           </div>
         </div>
@@ -35,140 +41,231 @@ export default function DesignSpecimenPage() {
 
       {/* Main Specimen Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Left Column: Typographic & Editorial Hierarchy */}
+        {/* Left Column: Typographic & Component Showcase */}
         <section className="lg:col-span-7 space-y-10">
+          {/* Typography Specimen */}
           <div>
             <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] block mb-2">
               01. Editorial Typography Specimen
             </span>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.1] text-[var(--text-primary)] tracking-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] text-[var(--text-primary)] tracking-tight">
               Technology. Data. <br />
-              <span className="italic font-serif text-[var(--accent-secondary)]">Decision Making.</span>
+              <span className="relative inline-block mt-1">
+                <span className="relative z-10 italic font-serif text-[var(--color-ink)]">
+                  Decision Making.
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-1 left-0 right-0 h-4 bg-[var(--color-mango)] -rotate-1 z-0 opacity-80"
+                />
+              </span>
             </h2>
           </div>
 
           <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl font-sans">
-            Undergraduate in Computer Science & Engineering specializing in
+            Undergraduate in Computer Science &amp; Engineering specializing in
             Cybersecurity, pursuing a parallel BS in Data Science at IIT Madras.
             Operating at the intersection of technical resilience, empirical modeling,
             and organizational resource allocation.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <a
-              href="#interactive-test"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded text-sm font-sans font-medium bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-primary-hover)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--focus-ring)] focus-visible:outline-offset-2"
-            >
-              Interactive Action Button
-            </a>
-            <a
-              href="#link-test"
-              className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[var(--accent-secondary)] hover:text-[var(--accent-secondary-hover)] underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--focus-ring)]"
-            >
-              Text Link with Hover State &rarr;
-            </a>
+          {/* Interactive Button & Control Tokens */}
+          <div className="space-y-3">
+            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] block">
+              02. Interactive Buttons &amp; Touch Controls
+            </span>
+            <div className="flex flex-wrap items-center gap-4 pt-1">
+              {/* Primary Guava Action */}
+              <button
+                type="button"
+                className="inline-flex items-center justify-center px-5 py-3 rounded text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-ink)] bg-[var(--color-guava)] hover:bg-[var(--color-mango)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+              >
+                Guava Action Button
+              </button>
+
+              {/* Mango Static Action */}
+              <button
+                type="button"
+                className="inline-flex items-center justify-center px-5 py-3 rounded text-sm font-mono font-bold tracking-wide text-[var(--color-ink)] bg-[var(--color-mango)] hover:bg-[var(--color-pistachio)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+              >
+                Mango Static Button
+              </button>
+
+              {/* Inline Link with Deep Guava */}
+              <a
+                href="#link-test"
+                className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[var(--color-guava-deep)] hover:text-[var(--color-ink)] underline underline-offset-4 decoration-2 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+              >
+                Accessible Deep Guava Link &rarr;
+              </a>
+            </div>
+          </div>
+
+          {/* Palette Swatches */}
+          <div className="space-y-3">
+            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] block">
+              03. The Seven Defining Palette Swatches
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-guava)] text-[var(--color-ink)]">
+                <span className="font-mono text-xs font-bold block">Guava Punch</span>
+                <span className="font-mono text-[10px]">#FF5B4D</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-pistachio)] text-[var(--color-ink)]">
+                <span className="font-mono text-xs font-bold block">Sour Pistachio</span>
+                <span className="font-mono text-[10px]">#D9EF68</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-mango)] text-[var(--color-ink)]">
+                <span className="font-mono text-xs font-bold block">Mango Static</span>
+                <span className="font-mono text-[10px]">#F5BC45</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-pool)] text-[var(--color-ink)]">
+                <span className="font-mono text-xs font-bold block">Pool Glass</span>
+                <span className="font-mono text-[10px]">#76CDB8</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-lilac)] text-[var(--color-ink)]">
+                <span className="font-mono text-xs font-bold block">Bruised Lilac</span>
+                <span className="font-mono text-[10px]">#B9A0E5</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-paper)]">
+                <span className="font-mono text-xs font-bold block">Blackberry Ink</span>
+                <span className="font-mono text-[10px]">#29232F</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-paper)] text-[var(--color-ink)]">
+                <span className="font-mono text-xs font-bold block">Peach Paper</span>
+                <span className="font-mono text-[10px]">#FFF0D8</span>
+              </div>
+              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-guava-deep)] text-white">
+                <span className="font-mono text-xs font-bold block">Deep Guava</span>
+                <span className="font-mono text-[10px]">#B32819</span>
+              </div>
+            </div>
           </div>
 
           {/* Elevated Surface & Card Specimen */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm space-y-4">
+          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border-2 border-[var(--color-ink)] shadow-[4px_4px_0px_var(--color-ink)] space-y-4">
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--accent-primary)]">
-                Flagship Case Study
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--color-ink)] bg-[var(--color-pistachio)] px-2 py-0.5 rounded border border-[var(--border-subtle)]">
+                Flagship Case Study Specimen
               </span>
               <span className="font-mono text-xs text-[var(--text-muted)]">
-                Status: In Development
+                Verification: In Progress
               </span>
             </div>
-            <h3 className="font-serif text-2xl font-semibold text-[var(--text-primary)]">
-              TaxFlow: Deterministic Compliance State Machine
+            <h3 className="font-serif text-2xl font-bold text-[var(--text-primary)]">
+              TaxFlow: Deterministic State Machine Engine
             </h3>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
               Automated compliance calculation engine with isolated state validation
               and tamper-evident audit logs. Built with strict mathematical invariants.
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-2 py-0.5 text-xs font-mono rounded bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+              <span className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-[var(--bg-surface-subtle)] text-[var(--color-ink)] border border-[var(--border-strong)]">
                 TypeScript
               </span>
-              <span className="px-2 py-0.5 text-xs font-mono rounded bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+              <span className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-[var(--bg-surface-subtle)] text-[var(--color-ink)] border border-[var(--border-strong)]">
                 Next.js App Router
               </span>
-              <span className="px-2 py-0.5 text-xs font-mono rounded bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
-                State Pattern
+              <span className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-[var(--bg-surface-subtle)] text-[var(--color-ink)] border border-[var(--border-strong)]">
+                Finite State Machine
               </span>
             </div>
           </div>
         </section>
 
-        {/* Right Column: Contrast Matrix & Technical Data Specimen */}
+        {/* Right Column: WCAG 2.2 Contrast Matrix & Technical Token Rules */}
         <section className="lg:col-span-5 space-y-10">
           {/* Contrast & Token Evaluation Table */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm space-y-4">
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] block">
-              02. Measured Contrast Ratios (WCAG 2.2)
-            </span>
+          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-control)] shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] font-bold">
+                04. Measured WCAG 2.2 Ratios
+              </span>
+              <span className="text-[10px] font-mono text-[var(--color-guava-deep)] font-bold">
+                CANVAS #FFF0D8
+              </span>
+            </div>
 
             <div className="space-y-3 font-mono text-xs">
               <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
-                <span className="text-[var(--text-primary)] font-bold">Deep Pine-Black (#131915)</span>
-                <span className="text-[var(--accent-primary)] font-bold">16.25:1 (AAA)</span>
+                <span className="text-[var(--text-primary)] font-bold">Ink on Paper (#29232F)</span>
+                <span className="text-green-700 font-bold">13.60:1 (AAA)</span>
               </div>
               <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
-                <span className="text-[var(--text-secondary)]">Olive Slate (#49534B)</span>
-                <span className="text-[var(--accent-primary)] font-bold">7.22:1 (AAA)</span>
+                <span className="text-[var(--text-secondary)] font-medium">Muted Slate (#5F5568)</span>
+                <span className="text-green-700 font-bold">6.27:1 (AA)</span>
               </div>
               <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
-                <span className="text-[var(--text-muted)]">Lichen Umber (#646E66)</span>
-                <span className="text-[var(--accent-primary)] font-bold">4.75:1 (AA)</span>
+                <span className="text-[var(--color-guava-deep)] font-bold">Deep Guava (#B32819)</span>
+                <span className="text-green-700 font-bold">5.78:1 (AA)</span>
               </div>
               <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
-                <span className="text-[var(--accent-primary)]">Juniper Moss (#3F5E2B)</span>
-                <span className="text-[var(--accent-primary)] font-bold">6.37:1 (AA)</span>
+                <span className="text-[var(--color-ink)] font-bold">Ink on Sour Pistachio</span>
+                <span className="text-green-700 font-bold">11.99:1 (AAA)</span>
               </div>
               <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
-                <span className="text-[var(--accent-secondary)]">Bramble Rust (#9E3C1B)</span>
-                <span className="text-[var(--accent-primary)] font-bold">6.29:1 (AA)</span>
+                <span className="text-[var(--color-ink)] font-bold">Ink on Mango Static</span>
+                <span className="text-green-700 font-bold">8.84:1 (AAA)</span>
+              </div>
+              <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
+                <span className="text-[var(--color-ink)] font-bold">Ink on Pool Glass</span>
+                <span className="text-green-700 font-bold">8.14:1 (AAA)</span>
+              </div>
+              <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
+                <span className="text-[var(--color-ink)] font-bold">Ink on Bruised Lilac</span>
+                <span className="text-green-700 font-bold">6.70:1 (AAA)</span>
+              </div>
+              <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
+                <span className="text-[var(--color-ink)] font-bold">Ink on Guava Punch</span>
+                <span className="text-green-700 font-bold">4.98:1 (AA)</span>
+              </div>
+              <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
+                <span className="text-[var(--color-ink)]">Control Border (50% alpha)</span>
+                <span className="text-green-700 font-bold">3.00:1 (SC 1.4.11)</span>
+              </div>
+              <div className="flex justify-between items-center py-1.5 border-b border-[var(--border-subtle)]">
+                <span className="text-[var(--text-muted)]">Guava Punch on Paper</span>
+                <span className="text-amber-700 font-semibold">2.73:1 (Graphic only)</span>
               </div>
             </div>
           </div>
 
-          {/* Technical Data & Code Specimen */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface-subtle)] border border-[var(--border-strong)] space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs uppercase text-[var(--text-muted)]">
-                03. Code & State Machine Specimen
-              </span>
-              <span className="font-mono text-xs text-[var(--accent-primary)]">
-                JetBrains Mono
-              </span>
-            </div>
-            <pre className="font-mono text-xs p-3 rounded bg-[var(--code-bg)] text-[var(--code-text)] border border-[var(--border-subtle)] overflow-x-auto leading-relaxed">
-{`// TaxFlow State Transition Guard
-type TaxState = "DRAFT" | "VALIDATING" | "COMMITTED";
-
-function transition(current: TaxState, event: "VERIFY"): TaxState {
-  if (current !== "DRAFT") throw new Error("Invalid state");
-  return "VALIDATING"; // Verified invariant
-}`}
-            </pre>
-          </div>
-
-          {/* Alternative Directions Evaluated */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-3">
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] block">
-              04. Evaluated Candidates Summary
+          {/* Technical Usage Constraints */}
+          <div className="p-6 rounded-lg bg-[var(--bg-surface-subtle)] border border-[var(--border-strong)] space-y-3 font-mono text-xs">
+            <span className="font-bold text-[var(--color-ink)] uppercase block">
+              05. Usage Constraints &amp; Rules
             </span>
-            <ul className="text-xs space-y-2 text-[var(--text-secondary)] font-sans">
+            <ul className="space-y-2 text-[var(--text-secondary)] font-sans list-disc pl-4">
               <li>
-                <strong className="text-[var(--text-primary)]">Direction A (Botanical Ink - Winner):</strong> Warm bone linen, deep pine-black, chartreuse-olive moss. Grounded, intellectual, highly distinctive.
+                <strong>Peach Paper &amp; Blackberry Ink</strong> are the foundational pair, ensuring 13.6:1 AAA contrast for all prose.
               </li>
               <li>
-                <strong className="text-[var(--text-primary)]">Direction B (Mineral & Pigment - Alternate):</strong> Chalk shell, deep aubergine, mineral cinnabar. Artistic but leans closer to luxury fashion catalog.
+                <strong>Guava Punch (`#FF5B4D`)</strong> is strictly for buttons, graphic shapes, and visual interruptions. For text on Peach Paper, the high-contrast <strong>Deep Guava (`#B32819`)</strong> is mandated (5.78:1).
               </li>
               <li>
-                <strong className="text-[var(--text-primary)]">Direction C (Archive After Dark - Alternate):</strong> Deep peat charcoal, soft parchment, acid ochre. Atmospheric, reserved for dark theme variant.
+                <strong>Sour Pistachio, Mango, Pool, and Lilac</strong> always carry Blackberry Ink text, achieving 6.7:1 to 12:1 AAA contrast.
+              </li>
+              <li>
+                <strong>Interactive Control Borders</strong> use `--border-control` (`rgba(41,35,47,0.50)`), achieving 3.00:1 against Peach Paper.
               </li>
             </ul>
+          </div>
+
+          {/* Code Specimen */}
+          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs uppercase text-[var(--text-muted)] font-bold">
+                06. JetBrains Mono Code Block
+              </span>
+              <span className="font-mono text-xs text-[var(--color-guava-deep)]">
+                TypeScript
+              </span>
+            </div>
+            <pre className="font-mono text-xs p-3 rounded bg-[var(--code-bg)] text-[var(--code-text)] border border-[var(--border-control)] overflow-x-auto leading-relaxed">
+{`// Tropical Anomaly Token Check
+const contrast = calculateContrast("#29232F", "#D9EF68");
+console.log(contrast); // 11.99:1 (WCAG AAA)`}
+            </pre>
           </div>
         </section>
       </div>

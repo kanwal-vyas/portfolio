@@ -39,7 +39,23 @@ const config: Config = {
         dm: ["var(--font-dm-sans)", "sans-serif"],
       },
       colors: {
-        // Semantic Token System (Direction A: Botanical Ink)
+        // Tropical Anomaly Defining Tokens
+        paper: "var(--color-paper)",
+        ink: {
+          DEFAULT: "var(--color-ink)",
+          muted: "var(--text-secondary)",
+        },
+        guava: {
+          DEFAULT: "var(--color-guava)",
+          deep: "var(--color-guava-deep)",
+          hover: "var(--accent-primary-hover)",
+        },
+        pistachio: "var(--color-pistachio)",
+        mango: "var(--color-mango)",
+        pool: "var(--color-pool)",
+        lilac: "var(--color-lilac)",
+
+        // Semantic Token System
         canvas: "var(--bg-canvas)",
         surface: {
           DEFAULT: "var(--bg-surface)",
@@ -53,13 +69,11 @@ const config: Config = {
         accent: {
           DEFAULT: "var(--accent-primary)",
           hover: "var(--accent-primary-hover)",
-          surface: "var(--accent-primary-surface)",
+          text: "var(--accent-primary-text)",
           2: "var(--accent-secondary)",
-        },
-        persimmon: {
-          DEFAULT: "var(--accent-secondary)",
-          hover: "var(--accent-secondary-hover)",
-          surface: "var(--accent-secondary-surface)",
+          pool: "var(--color-pool)",
+          pistachio: "var(--color-pistachio)",
+          lilac: "var(--color-lilac)",
         },
         rule: {
           subtle: "var(--border-subtle)",
@@ -74,7 +88,7 @@ const config: Config = {
         },
         indigo: {
           deep: "var(--bg-surface-subtle)",
-          violet: "var(--accent-primary)",
+          violet: "var(--color-guava-deep)",
         },
       },
       animation: {
@@ -100,4 +114,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;

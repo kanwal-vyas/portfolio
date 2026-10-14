@@ -4,57 +4,69 @@
 
 :root {
   /* ==========================================================================
-     Direction A: Botanical Ink (Editorial Technologist Design System)
-     Light / Editorial Canvas (Default Identity)
+     Creative Direction: Tropical Anomaly Design System
+     Expressive colour, unexpected combinations, experimental editorial composition,
+     and controlled visual rhythm.
      ========================================================================== */
 
-  /* Surface & Background Tokens */
-  --bg-canvas: #F7F6F1;             /* Warm Bone Linen Stone */
-  --bg-surface: #FFFFFF;            /* Alabaster Elevated Surface */
-  --bg-surface-subtle: #ECEAE2;     /* Inset Technical Surface */
+  /* Defining Palette Tokens */
+  --color-guava: #FF5B4D;          /* Guava Punch: Signature colour; strong visual interruptions */
+  --color-guava-deep: #B32819;     /* Deep Guava: High-contrast text/link variant on Peach Paper (5.78:1) */
+  --color-pistachio: #D9EF68;      /* Sour Pistachio: Acidic contrast, highlighted labels, badge tags */
+  --color-mango: #F5BC45;          /* Mango Static: Warm accent blocks, selected highlights, visual rhythm */
+  --color-pool: #76CDB8;           /* Pool Glass: Cool counterpoint and selected editorial surfaces */
+  --color-lilac: #B9A0E5;          /* Bruised Lilac: Unexpected contrast, occasional graphic accents */
+  --color-ink: #29232F;            /* Blackberry Ink: Primary text, strong outlines, structural contrast */
+  --color-paper: #FFF0D8;          /* Peach Paper: Primary light canvas and editorial negative space */
 
-  /* Text & Typography Tokens */
-  --text-primary: #131915;          /* Deep Forest Pine-Black (Contrast: 16.2:1 against canvas) */
-  --text-secondary: #49534B;        /* Smoked Olive Slate (Contrast: 7.2:1 against canvas) */
-  --text-muted: #646E66;            /* Lichen Umber (Contrast: 4.8:1 against canvas) */
+  /* Semantic Color System */
+  --bg-canvas: var(--color-paper);
+  --bg-surface: #FFFFFF;
+  --bg-surface-subtle: #F6E6CE;     /* Warm parchment inset for technical metadata and code */
 
-  /* Accent & Highlight Tokens */
-  --accent-primary: #3F5E2B;        /* Chartreuse Olive / Juniper Moss (Contrast: 6.4:1 against canvas) */
-  --accent-primary-hover: #2E461F;
-  --accent-primary-surface: rgba(63, 94, 43, 0.08); /* Subtle badge/tag background */
-  --accent-secondary: #9E3C1B;      /* Dried Persimmon / Bramble Rust (Contrast: 6.3:1 against canvas) */
-  --accent-secondary-hover: #7D2E14;
-  --accent-secondary-surface: rgba(158, 60, 27, 0.08);
+  --text-primary: var(--color-ink);        /* Blackberry Ink on Peach Paper (13.60:1 — Passes AAA) */
+  --text-secondary: #5F5568;              /* Muted Blackberry Ink on Peach Paper (6.27:1 — Passes AA) */
+  --text-muted: #73697C;                  /* Caption Slate on Peach Paper (4.52:1 — Passes AA) */
+
+  /* Semantic Accent Roles */
+  --accent-primary: var(--color-guava);          /* Guava Punch signature accent */
+  --accent-primary-hover: #E84537;
+  --accent-primary-text: var(--color-guava-deep); /* High-contrast text on Peach Paper (5.78:1) */
+  --accent-secondary: var(--color-mango);        /* Mango Static accent */
+  --accent-secondary-hover: #E2A82E;
+  --accent-tertiary: var(--color-pistachio);     /* Sour Pistachio highlight */
+  --accent-pool: var(--color-pool);              /* Pool Glass surface */
+  --accent-lilac: var(--color-lilac);            /* Bruised Lilac accent */
 
   /* Border & Rule Tokens */
-  --border-subtle: rgba(19, 25, 21, 0.09); /* Hairline editorial rule / divider */
-  --border-strong: rgba(19, 25, 21, 0.20); /* Decorative card outline (Contrast: 1.52:1 vs canvas #F7F6F1) */
-  --border-control: rgba(19, 25, 21, 0.50); /* Interactive control boundary (Contrast: 3.32:1 vs canvas #F7F6F1, 3.40:1 vs #FFFFFF; WCAG 2.2 SC 1.4.11 compliant) */
+  --border-subtle: rgba(41, 35, 47, 0.12); /* Hairline editorial rule / divider (1.26:1, decorative) */
+  --border-strong: rgba(41, 35, 47, 0.22); /* Decorative card outline and container frames (1.52:1, decorative) */
+  --border-control: rgba(41, 35, 47, 0.50); /* Interactive control boundary (3.00:1 vs canvas #FFF0D8; WCAG 2.2 SC 1.4.11 compliant) */
 
   /* Interactive, Focus & Selection */
-  --focus-ring: #3F5E2B;
-  --selection-bg: rgba(63, 94, 43, 0.16);
-  --selection-text: #131915;
+  --focus-ring: var(--color-ink);
+  --selection-bg: rgba(255, 91, 77, 0.25);
+  --selection-text: var(--color-ink);
 
-  /* Code & Diagram Surfaces */
-  --code-bg: #ECEAE2;
-  --code-text: #131915;
-  --code-border: rgba(19, 25, 21, 0.12);
+  /* Code & Technical Surfaces */
+  --code-bg: #F6E6CE;
+  --code-text: var(--color-ink);
+  --code-border: rgba(41, 35, 47, 0.16);
 
   /* ==========================================================================
-     Backwards-Compatibility Aliases (Preserves Existing Components)
+     Backwards-Compatibility Aliases (Preserves Existing Un-migrated Components)
      ========================================================================== */
   --navy: var(--bg-canvas);
   --navy-2: var(--bg-surface);
   --navy-3: var(--bg-surface-subtle);
-  --accent: var(--accent-primary);
+  --accent: var(--accent-primary-text);
   --accent-2: var(--accent-secondary);
   --text: var(--text-primary);
   --text-2: var(--text-secondary);
   --text-3: var(--text-muted);
   --border: var(--border-subtle);
   --border-2: var(--border-strong);
-  --glow: rgba(63, 94, 43, 0.06);
+  --glow: rgba(255, 91, 77, 0.08);
   --card: var(--bg-surface);
 
   /* Font Aliases for Existing Components */
@@ -63,30 +75,37 @@
 }
 
 /* ==========================================================================
-   Nocturne Variant (Dark Theme Hypothesis)
+   Nocturne Variant (Tropical Anomaly Dark Theme Adaptation)
    ========================================================================== */
 [data-theme="dark"] {
-  --bg-canvas: #101512;
-  --bg-surface: #171F1A;
-  --bg-surface-subtle: #1E2722;
-  --text-primary: #EDF2EE;
-  --text-secondary: #9CB0A1;
-  --text-muted: #6D7F72;
-  --accent-primary: #86B360;
-  --accent-primary-hover: #9DC777;
-  --accent-primary-surface: rgba(134, 179, 96, 0.12);
-  --accent-secondary: #E27552;
-  --accent-secondary-hover: #EDA085;
-  --accent-secondary-surface: rgba(226, 117, 82, 0.12);
-  --border-subtle: rgba(237, 242, 238, 0.08);
-  --border-strong: rgba(237, 242, 238, 0.20);
-  --border-control: rgba(237, 242, 238, 0.42); /* Interactive control boundary (Contrast: 3.8:1 vs #101512) */
-  --focus-ring: #86B360;
-  --selection-bg: rgba(134, 179, 96, 0.25);
-  --selection-text: #EDF2EE;
-  --code-bg: #171F1A;
-  --code-text: #EDF2EE;
-  --code-border: rgba(237, 242, 238, 0.12);
+  --bg-canvas: #16131A;             /* Obsidian Blackberry */
+  --bg-surface: #201B26;            /* Deep Plum Surface */
+  --bg-surface-subtle: #2A2432;     /* Inset Night Texture */
+
+  --text-primary: #FFF0D8;          /* Peach Paper on Dark (13.6:1) */
+  --text-secondary: #D4C9DE;        /* Pale Lilac Silk (8.4:1) */
+  --text-muted: #9D92A6;            /* Muted Heather (4.6:1) */
+
+  --accent-primary: #FF6E62;        /* Luminous Guava */
+  --accent-primary-hover: #FF857B;
+  --accent-primary-text: #FF857B;
+  --accent-secondary: #F5BC45;      /* Mango Static */
+  --accent-secondary-hover: #F8CB6B;
+  --accent-tertiary: #D9EF68;       /* Sour Pistachio */
+  --accent-pool: #76CDB8;
+  --accent-lilac: #C4ADEE;
+
+  --border-subtle: rgba(255, 240, 216, 0.10);
+  --border-strong: rgba(255, 240, 216, 0.22);
+  --border-control: rgba(255, 240, 216, 0.48); /* 3.2:1 vs #16131A */
+
+  --focus-ring: #D9EF68;
+  --selection-bg: rgba(255, 91, 77, 0.35);
+  --selection-text: #FFF0D8;
+
+  --code-bg: #201B26;
+  --code-text: #FFF0D8;
+  --code-border: rgba(255, 240, 216, 0.14);
 }
 
 html {
@@ -125,7 +144,7 @@ h1, h2, h3, .font-serif {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
+  background: var(--color-ink);
 }
 
 /* Text Selection */

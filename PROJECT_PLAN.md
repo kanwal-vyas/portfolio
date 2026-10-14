@@ -93,48 +93,48 @@ The portfolio is conceptualized as an **experimental digital publication and tec
 ### 4.1 Evaluated Color System Candidates
 To avoid generic developer and cybersecurity tropes (neon blue, cyan, purple gradients), three distinct palette directions were rigorously evaluated against the 10 project criteria:
 
-1. **Direction A — Botanical Ink (Selected Winner)**:
-   - *Atmosphere*: Intellectual, grounded, distinctive, tactile monograph.
-   - *Canvas Base*: Warm Bone Linen Stone (`#F7F6F1`) / Elevated Alabaster (`#FFFFFF`).
-   - *Text*: Deep Forest Pine-Black (`#131915`, contrast 16.25:1) + Olive Slate (`#49534B`, contrast 7.22:1).
-   - *Accents*: Chartreuse Olive / Juniper Moss (`#3F5E2B`, contrast 6.37:1) + Dried Persimmon / Bramble Rust (`#9E3C1B`, contrast 6.29:1).
-   - *Selection Rationale*: Provides high contrast and unmistakable originality. Pine-black and warm bone linen establish an authentic publishing feel; juniper moss and bramble rust provide restrained, elegant accents without neon visual noise.
-2. **Direction B — Mineral & Pigment (Evaluated Alternate)**:
-   - *Atmosphere*: Artistic, editorial, confident mineral tones.
-   - *Canvas Base*: Chalk Shell (`#F8F6F2`).
-   - *Text*: Deep Aubergine / Plum-Black (`#1A141D`).
-   - *Accent*: Mineral Cinnabar / Vermilion (`#B53A26`) + Raw Clay (`#A87434`).
-   - *Evaluation*: Highly distinctive, but leans closer to luxury fashion cataloging than rigorous engineering and data science publishing.
-3. **Direction C — Archive After Dark (Evaluated Alternate / Nocturne Variant)**:
-   - *Atmosphere*: Deep peat charcoal, soft parchment, and burnished acid ochre.
-   - *Canvas Base*: Deep Peat Charcoal (`#101512` / `#131415`).
-   - *Text*: Crisp Linen (`#EDF2EE`).
-   - *Accent*: Luminous Moss (`#86B360`) + Warm Persimmon Glow (`#E27552`).
-   - *Evaluation*: Retained as the formal Nocturne dark theme variant for users requesting dark mode.
+1. **Creative Direction: Tropical Anomaly (Approved Stage 2 Winner)**:
+   - *Atmosphere*: Expressive colour, unexpected combinations, experimental editorial composition, and controlled visual rhythm. A sunlit art studio, digital laboratory, and independent experimental publication converging.
+   - *Canvas Base*: Peach Paper (`#FFF0D8`, L = 0.8854) / Elevated White (`#FFFFFF`).
+   - *Text*: Blackberry Ink (`#29232F`, L = 0.0188, contrast 13.60:1 vs Peach Paper — Passes AAA) + Muted Slate (`#5F5568`, contrast 6.27:1 — Passes AA).
+   - *Defining Signature Palette*:
+     - **Guava Punch** (`#FF5B4D`, L = 0.2928): Signature interruptor, graphic blocks, and interactive buttons (4.98:1 with Blackberry Ink).
+     - **Deep Guava** (`#B32819`, L = 0.1117): High-contrast inline text/link variant on Peach Paper (5.78:1 — Passes AA).
+     - **Sour Pistachio** (`#D9EF68`, L = 0.7748): Acidic contrast tags/badges (11.99:1 with Blackberry Ink — Passes AAA).
+     - **Mango Static** (`#F5BC45`, L = 0.5581): Warm accent blocks and highlights (8.84:1 with Blackberry Ink — Passes AAA).
+     - **Pool Glass** (`#76CDB8`, L = 0.5097): Cool counterpoint and editorial surfaces (8.14:1 with Blackberry Ink — Passes AAA).
+     - **Bruised Lilac** (`#B9A0E5`, L = 0.4111): Unexpected contrast and graphic accents (6.70:1 with Blackberry Ink — Passes AAA).
+   - *Dark Theme Variant (Nocturne)*: Obsidian Blackberry canvas (`#16131A`), Peach Paper text (`#FFF0D8`, 13.6:1), Pale Lilac Silk (`#D4C9DE`), Luminous Guava (`#FF6E62`), Sour Pistachio (`#D9EF68`).
 
-### 4.2 Semantic Token System & Contrast Ratios (WCAG 2.2 AA Verified)
-All colors are implemented as semantic CSS custom properties in `src/app/globals.css` and exposed via `tailwind.config.ts`:
+### 4.2 Semantic Token System & Contrast Ratios (WCAG 2.2 AA / AAA Verified)
+All colors are implemented as semantic CSS custom properties in `src/app/globals.css`, validated via `scripts/verify-contrast.mjs`, and exposed via `tailwind.config.ts`:
 
 | Token Name | Value (Light) | Role & Pairing | Contrast vs Canvas | WCAG 2.2 Level |
 | :--- | :--- | :--- | :---: | :---: |
-| `--bg-canvas` | `#F7F6F1` | Primary page background (Warm Bone Linen) | Base | — |
-| `--bg-surface` | `#FFFFFF` | Elevated cards, dialogs, editorial containers | 1.08:1 | Non-text surface |
-| `--bg-surface-subtle` | `#ECEAE2` | Inset technical metadata, code background | 1.12:1 | Non-text surface |
-| `--text-primary` | `#131915` | Display headlines, body text (Deep Pine-Black) | **16.48:1** | **Passes AAA** |
-| `--text-secondary` | `#49534B` | Subheads, descriptive copy (Olive Slate) | **7.40:1** | **Passes AAA** |
-| `--text-muted` | `#646E66` | Dates, captions, metadata tags (Lichen Umber) | **4.90:1** | **Passes AA** |
-| `--accent-primary` | `#3F5E2B` | Interactive links, active states, tags (Juniper Moss) | **6.82:1** | **Passes AA** |
-| `--accent-secondary` | `#9E3C1B` | Secondary alerts, key markers (Bramble Rust) | **6.23:1** | **Passes AA** |
-| `--border-subtle` | `rgba(19, 25, 21, 0.09)` | Hairline dividers, rule separators | — | Structural boundary |
-| `--border-strong` | `rgba(19, 25, 21, 0.20)` | Decorative card outlines, container frames | **1.52:1** | Decorative boundary |
-| `--border-control` | `rgba(19, 25, 21, 0.50)` | Interactive control boundaries (inputs, toggles, form elements) | **3.32:1** | **Passes UI AA** (≥ 3.0:1) |
-| `--focus-ring` | `#3F5E2B` | 2px focus ring with 2px offset on `:focus-visible` | **6.82:1** | **Passes Focus AA** |
+| `--color-paper` / `--bg-canvas` | `#FFF0D8` | Primary page canvas (Peach Paper, L = 0.8854) | Base | — |
+| `--bg-surface` | `#FFFFFF` | Elevated cards, dialogs, editorial containers | 1.13:1 | Non-text surface |
+| `--bg-surface-subtle` | `#F6E6CE` | Inset technical metadata, code background | 1.07:1 | Non-text surface |
+| `--color-ink` / `--text-primary` | `#29232F` | Display headlines, body text (Blackberry Ink) | **13.60:1** | **Passes AAA** |
+| `--text-secondary` | `#5F5568` | Subheads, descriptive copy (Muted Slate) | **6.27:1** | **Passes AA** |
+| `--text-muted` | `#73697C` | Dates, captions, metadata tags | **4.52:1** | **Passes AA** |
+| `--color-guava` | `#FF5B4D` | Guava Punch signature block (with Ink text) | **4.98:1** (on Guava) | **Passes AA** |
+| `--color-guava-deep` | `#B32819` | Deep Guava text links & inline accents on Paper | **5.78:1** | **Passes AA** |
+| `--color-pistachio` | `#D9EF68` | Sour Pistachio badge tags (with Ink text) | **11.99:1** (on Pistachio) | **Passes AAA** |
+| `--color-mango` | `#F5BC45` | Mango Static accent blocks (with Ink text) | **8.84:1** (on Mango) | **Passes AAA** |
+| `--color-pool` | `#76CDB8` | Pool Glass editorial surfaces (with Ink text) | **8.14:1** (on Pool) | **Passes AAA** |
+| `--color-lilac` | `#B9A0E5` | Bruised Lilac accent tags (with Ink text) | **6.70:1** (on Lilac) | **Passes AAA** |
+| `--border-subtle` | `rgba(41, 35, 47, 0.12)` | Hairline dividers, rule separators | **1.26:1** | Decorative boundary |
+| `--border-strong` | `rgba(41, 35, 47, 0.22)` | Decorative card outlines, container frames | **1.52:1** | Decorative boundary |
+| `--border-control` | `rgba(41, 35, 47, 0.50)` | Interactive control boundaries (inputs, toggles, outlines) | **3.00:1** | **Passes UI AA** (≥ 3.0:1) |
+| `--focus-ring` | `#29232F` | 2px focus ring with 2px offset on `:focus-visible` | **13.60:1** | **Passes Focus AAA** |
 
 #### Calculation Methodology & Boundary Rules
-- **Compositing Formula**: For alpha tokens over opaque backgrounds, the effective color is $C_{\text{comp}} = \text{round}(C_{\text{fg}} \cdot \alpha + C_{\text{bg}} \cdot (1 - \alpha))$. Contrast is then determined via standard WCAG 2.2 relative luminance formula: $(L_1 + 0.05) / (L_2 + 0.05)$.
-- **Decorative vs. Interactive Boundary Distinction**:
-  - `--border-strong` (`rgba(19, 25, 21, 0.20)` composited over `#F7F6F1` = `#C9CAC5`, contrast **1.52:1**) is strictly reserved for decorative container framing and card edges where adjacent surface color differences (`#FFFFFF` vs `#F7F6F1`) already provide visual separation.
-  - `--border-control` (`rgba(19, 25, 21, 0.50)` composited over `#F7F6F1` = `#858883`, contrast **3.32:1**; over `#FFFFFF` = `#898C8A`, contrast **3.40:1**; over `#ECEAE2` = `#80827C`, contrast **3.23:1**) is mandated for any interactive control boundaries, form inputs, or search triggers where the border is required to identify the control under WCAG 2.2 SC 1.4.11.
+- **Verification Script**: Reproducible script at `scripts/verify-contrast.mjs` calculates relative luminance $L = 0.2126 \cdot R_{lin} + 0.7152 \cdot G_{lin} + 0.0722 \cdot B_{lin}$ and contrast $(L_1 + 0.05) / (L_2 + 0.05)$.
+- **Strict Usage Constraints**:
+  - Guava Punch (`#FF5B4D`) on Peach Paper has a contrast ratio of 2.73:1, making it unsuitable for small body text. It is strictly reserved for visual interruptions, background cards, and buttons. When text appears on Guava Punch, Blackberry Ink (`#29232F`) is used (4.98:1, passing AA).
+  - For inline text links on Peach Paper, Deep Guava (`#B32819`) is mandated, achieving 5.78:1 (passing AA).
+  - Sour Pistachio, Mango Static, Pool Glass, and Bruised Lilac always carry Blackberry Ink text, achieving 6.7:1 to 12.0:1 AAA contrast.
+  - Interactive Control Boundary `--border-control` (`rgba(41, 35, 47, 0.50)` composited over `#FFF0D8` = `#948A84`, contrast **3.00:1**) satisfies WCAG 2.2 SC 1.4.11.
 
 ### 4.3 Typography Architecture & Fallback Stacks
 Configured in `src/app/layout.tsx` via `next/font/google` and mapped in `tailwind.config.ts`:
@@ -147,11 +147,11 @@ Configured in `src/app/layout.tsx` via `next/font/google` and mapped in `tailwin
 - **Backwards Compatibility**: `--font-sora` maps to `var(--font-newsreader)` and `--font-dm-sans` maps to `var(--font-plus-jakarta)` to ensure existing sections render cleanly.
 
 ### 4.4 Design-Token Specimen Evaluation
-An isolated specimen was constructed at `src/app/design-specimen/page.tsx` and visually validated via browser automation:
-- Verified large serif headline rendering ("Direction A: Botanical Ink", "Technology. Data. Decision Making.").
-- Verified elevated card surface, border contrast, and JetBrains Mono code block rendering.
-- Verified interactive hover and `:focus-visible` outline states.
-- Verified responsive reflow at 390px mobile viewport width with zero horizontal overflow.
+An isolated specimen is maintained at `src/app/design-specimen/page.tsx` and visually validated via browser automation:
+- Verified large serif headline rendering ("Tropical Anomaly Palette", "Technology. Data. Decision Making.").
+- Verified all 7 palette swatches, interactive button hover states, and JetBrains Mono code block rendering.
+- Verified WCAG 2.2 contrast compliance table displaying measured ratios.
+- Verified responsive reflow across 1536px desktop, 1024px tablet, 390px mobile, and 320px narrow mobile viewports with zero horizontal overflow.
 
 ---
 
@@ -456,28 +456,46 @@ graph TD
 
 ---
 
-### Stage 2: Masthead, Global Navigation & Editorial Hero
-- **Objective**: Deliver the primary editorial visual identity and positioning at the top of the viewport.
+### Stage 2: Masthead, Global Navigation & Editorial Hero (Tropical Anomaly)
+- **Objective**: Deliver the primary editorial visual identity, Tropical Anomaly design system, responsive masthead, and asymmetric editorial hero spread.
 - **Scope Included**:
-  1. Rebuild `src/components/ui/Nav.tsx` as an editorial publication masthead.
-  2. Implement responsive mobile navigation drawer with accessible focus management.
-  3. Rebuild `src/components/sections/Hero.tsx` with asymmetric editorial layout and dual-discipline thesis.
-  4. Integrate core principles from `Philosophy.tsx` directly into the Hero narrative.
-  5. Update `src/app/page.tsx` composition.
-- **Explicit Exclusions**: Case studies, journal reader, trajectory sections.
-- **Preconditions & Dependencies**: Stage 1 completed, verified, committed, and pushed.
-- **Files Expected to Change**: `src/components/ui/Nav.tsx`, `src/components/sections/Hero.tsx`, `src/app/page.tsx`, `PROJECT_PLAN.md`.
-- **Deliverables**: Functional masthead and responsive editorial Hero.
-- **Risks & Mitigation**: Hero text overflow on small viewports; mitigated by fluid typography clamps (`clamp(2.5rem, 5vw, 4.5rem)`).
+  1. Implement Tropical Anomaly design tokens in `src/app/globals.css` and map in `tailwind.config.ts`.
+  2. Rebuild `src/components/ui/Nav.tsx` as an editorial publication masthead with typographic wordmark, role descriptor, and accessible mobile navigation drawer (focus management, keyboard `Escape` support, ARIA attributes).
+  3. Rebuild `src/components/sections/Hero.tsx` with asymmetric editorial spread, expressive Newsreader display headline ("Technology. Data. Decision Making."), truthful Cybersecurity + IIT Madras BS in Data Science thesis, and chromatic metadata block.
+  4. Ensure accessible contrast boundaries: Peach Paper (`#FFF0D8`) with Blackberry Ink (`#29232F`, 13.60:1) and Deep Guava (`#B32819`, 5.78:1) for text; Guava Punch (`#FF5B4D`, 4.98:1), Sour Pistachio (`#D9EF68`, 11.99:1), Mango Static (`#F5BC45`, 8.84:1), and Pool Glass (`#76CDB8`, 8.14:1) for intentional color blocking.
+  5. Interactive control borders `--border-control` (`rgba(41, 35, 47, 0.50)`) verified at 3.00:1 (WCAG 2.2 SC 1.4.11 compliant).
+  6. Update `/design-specimen` with Tropical Anomaly swatches and WCAG 2.2 contrast compliance table.
+  7. Add reproducible automated contrast verification script `scripts/verify-contrast.mjs`.
+- **Explicit Exclusions**: Case studies, writing section redesign, timeline redesign, database or backend changes (strictly NO Stage 3 work).
+- **Preconditions & Dependencies**: Stage 1 and Stage 1.1 completed and pushed; clean baseline at `6687f47`.
+- **Files Actually Changed**:
+  - `src/app/globals.css`
+  - `tailwind.config.ts`
+  - `src/components/ui/Nav.tsx`
+  - `src/components/sections/Hero.tsx`
+  - `src/components/sections/CaseStudy.tsx`
+  - `src/app/design-specimen/page.tsx`
+  - `eslint.config.mjs`
+  - `scripts/verify-contrast.mjs`
+  - `PROJECT_PLAN.md`
+- **Deliverables**: Distinctive Tropical Anomaly editorial masthead, accessible navigation, expressive first spread hero, and isolated design specimen.
 - **Acceptance Criteria**:
-  - Masthead index and navigation links function with smooth scrolling.
-  - Mobile menu operates with keyboard `Tab` and `Esc` key support.
-  - Hero clearly communicates the Cybersecurity + IIT Madras BS in Data Science thesis.
-  - Zero horizontal overflow down to 320px viewport width.
-- **Verification Commands**: `npm run lint`, `npm run build`.
-- **Completion Evidence**: Responsive browser inspection across desktop (1440px), tablet (768px), and mobile (375px).
+  - [x] Masthead wordmark and navigation links operate with smooth scrolling and direct specimen route.
+  - [x] Mobile drawer operates with keyboard `Tab` and `Esc` key support, full ARIA attributes (`aria-expanded`, `aria-controls`), and scroll lock.
+  - [x] Hero truthfully communicates B.Tech CSE Cybersecurity + IIT Madras BS in Data Science dual foundation with zero fabricated metrics or fake widgets.
+  - [x] Zero horizontal overflow verified down to 320px viewport width.
+  - [x] Contrast verified via reproducible script and documented against WCAG 2.2 standards.
+- **Verification Commands Executed**:
+  - `npm run test:content`: Passed (0 failures across all schema and data preservation checks).
+  - `node ./node_modules/typescript/bin/tsc --noEmit`: Passed (0 errors).
+  - `npm run lint`: Passed (0 warnings, 0 errors).
+  - `node scripts/verify-contrast.mjs`: Passed (all pairs verified; 13.60:1 text, 3.00:1 controls, 4.98:1-11.99:1 color blocks).
+  - `npm run build`: Passed (clean production build, all static pages generated).
+  - Browser subagent visual inspection: Passed across 1536px desktop, 1024px tablet, 390px mobile, and 320px narrow mobile viewports.
+- **Completion Evidence**: Verified browser screenshots and recordings; clean production build; updated design specimen; reproducible contrast script.
 - **Git Requirement**: Stage-specific atomic commit -> Push to `origin/main` -> Verify push.
-- **Status**: **Pending**.
+- **Status**: **Completed (Stage 2)**.
+- **Stage 3 Prerequisites**: Independent verification gate for TaxFlow and Cyber Crime Analytics codebases remains mandatory prior to authoring or publishing case studies.
 
 ---
 

@@ -9,7 +9,8 @@ export default function CaseStudy() {
   const p = caseStudyProject;
 
   return (
-    <section className="px-8 md:px-12 py-28" id="work">
+    <section className="px-8 md:px-12 py-28 relative" id="work">
+      <span id="case-study" className="absolute -top-24" aria-hidden="true" />
       <SectionLabel>
         <Reveal>Featured Project</Reveal>
       </SectionLabel>
