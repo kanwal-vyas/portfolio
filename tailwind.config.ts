@@ -64,6 +64,7 @@ const config: Config = {
         rule: {
           subtle: "var(--border-subtle)",
           strong: "var(--border-strong)",
+          control: "var(--border-control)",
         },
         // Legacy color aliases for existing component compatibility
         navy: {

@@ -27,8 +27,9 @@
   --accent-secondary-surface: rgba(158, 60, 27, 0.08);
 
   /* Border & Rule Tokens */
-  --border-subtle: rgba(19, 25, 21, 0.09); /* Hairline editorial rule */
-  --border-strong: rgba(19, 25, 21, 0.20); /* Card/input/focus border */
+  --border-subtle: rgba(19, 25, 21, 0.09); /* Hairline editorial rule / divider */
+  --border-strong: rgba(19, 25, 21, 0.20); /* Decorative card outline (Contrast: 1.52:1 vs canvas #F7F6F1) */
+  --border-control: rgba(19, 25, 21, 0.50); /* Interactive control boundary (Contrast: 3.32:1 vs canvas #F7F6F1, 3.40:1 vs #FFFFFF; WCAG 2.2 SC 1.4.11 compliant) */
 
   /* Interactive, Focus & Selection */
   --focus-ring: #3F5E2B;
@@ -79,6 +80,7 @@
   --accent-secondary-surface: rgba(226, 117, 82, 0.12);
   --border-subtle: rgba(237, 242, 238, 0.08);
   --border-strong: rgba(237, 242, 238, 0.20);
+  --border-control: rgba(237, 242, 238, 0.42); /* Interactive control boundary (Contrast: 3.8:1 vs #101512) */
   --focus-ring: #86B360;
   --selection-bg: rgba(134, 179, 96, 0.25);
   --selection-text: #EDF2EE;

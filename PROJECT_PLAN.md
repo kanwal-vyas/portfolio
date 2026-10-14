@@ -120,14 +120,21 @@ All colors are implemented as semantic CSS custom properties in `src/app/globals
 | `--bg-canvas` | `#F7F6F1` | Primary page background (Warm Bone Linen) | Base | — |
 | `--bg-surface` | `#FFFFFF` | Elevated cards, dialogs, editorial containers | 1.08:1 | Non-text surface |
 | `--bg-surface-subtle` | `#ECEAE2` | Inset technical metadata, code background | 1.12:1 | Non-text surface |
-| `--text-primary` | `#131915` | Display headlines, body text (Deep Pine-Black) | **16.25:1** | **Passes AAA** |
-| `--text-secondary` | `#49534B` | Subheads, descriptive copy (Olive Slate) | **7.22:1** | **Passes AAA** |
-| `--text-muted` | `#646E66` | Dates, captions, metadata tags (Lichen Umber) | **4.75:1** | **Passes AA** |
-| `--accent-primary` | `#3F5E2B` | Interactive links, active states, tags (Juniper Moss) | **6.37:1** | **Passes AA** |
-| `--accent-secondary` | `#9E3C1B` | Secondary alerts, key markers (Bramble Rust) | **6.29:1** | **Passes AA** |
+| `--text-primary` | `#131915` | Display headlines, body text (Deep Pine-Black) | **16.48:1** | **Passes AAA** |
+| `--text-secondary` | `#49534B` | Subheads, descriptive copy (Olive Slate) | **7.40:1** | **Passes AAA** |
+| `--text-muted` | `#646E66` | Dates, captions, metadata tags (Lichen Umber) | **4.90:1** | **Passes AA** |
+| `--accent-primary` | `#3F5E2B` | Interactive links, active states, tags (Juniper Moss) | **6.82:1** | **Passes AA** |
+| `--accent-secondary` | `#9E3C1B` | Secondary alerts, key markers (Bramble Rust) | **6.23:1** | **Passes AA** |
 | `--border-subtle` | `rgba(19, 25, 21, 0.09)` | Hairline dividers, rule separators | — | Structural boundary |
-| `--border-strong` | `rgba(19, 25, 21, 0.20)` | Card outlines, input borders | **3.2:1** | **Passes UI AA** |
-| `--focus-ring` | `#3F5E2B` | 2px focus ring with 2px offset on `:focus-visible` | **6.37:1** | **Passes Focus AA** |
+| `--border-strong` | `rgba(19, 25, 21, 0.20)` | Decorative card outlines, container frames | **1.52:1** | Decorative boundary |
+| `--border-control` | `rgba(19, 25, 21, 0.50)` | Interactive control boundaries (inputs, toggles, form elements) | **3.32:1** | **Passes UI AA** (≥ 3.0:1) |
+| `--focus-ring` | `#3F5E2B` | 2px focus ring with 2px offset on `:focus-visible` | **6.82:1** | **Passes Focus AA** |
+
+#### Calculation Methodology & Boundary Rules
+- **Compositing Formula**: For alpha tokens over opaque backgrounds, the effective color is $C_{\text{comp}} = \text{round}(C_{\text{fg}} \cdot \alpha + C_{\text{bg}} \cdot (1 - \alpha))$. Contrast is then determined via standard WCAG 2.2 relative luminance formula: $(L_1 + 0.05) / (L_2 + 0.05)$.
+- **Decorative vs. Interactive Boundary Distinction**:
+  - `--border-strong` (`rgba(19, 25, 21, 0.20)` composited over `#F7F6F1` = `#C9CAC5`, contrast **1.52:1**) is strictly reserved for decorative container framing and card edges where adjacent surface color differences (`#FFFFFF` vs `#F7F6F1`) already provide visual separation.
+  - `--border-control` (`rgba(19, 25, 21, 0.50)` composited over `#F7F6F1` = `#858883`, contrast **3.32:1**; over `#FFFFFF` = `#898C8A`, contrast **3.40:1**; over `#ECEAE2` = `#80827C`, contrast **3.23:1**) is mandated for any interactive control boundaries, form inputs, or search triggers where the border is required to identify the control under WCAG 2.2 SC 1.4.11.
 
 ### 4.3 Typography Architecture & Fallback Stacks
 Configured in `src/app/layout.tsx` via `next/font/google` and mapped in `tailwind.config.ts`:
@@ -421,7 +428,30 @@ graph TD
   - Browser subagent evaluation: Passed (Newsreader, Plus Jakarta Sans, JetBrains Mono rendered cleanly; mobile 390px viewport reflow verified).
 - **Completion Evidence**: Clean production build; passing content validation; documented investigation and contrast findings; verified Git diff.
 - **Git Requirement**: Stage-specific atomic commit -> Push to `origin/main` -> Verify push.
-- **Status**: **Completed (Verified)**.
+- **Status**: **Completed (Verified in commit `c017665`)**.
+
+
+---
+
+### Stage 1.1: Contrast Correction & Plan Synchronization (Audit Remediation)
+- **Objective**: Remediate the border contrast calculation finding identified in the independent post-implementation audit of Stage 1 (`c017665`).
+- **Scope Included**:
+  1. Mathematically recalculate and correct border contrast ratios against `#F7F6F1`.
+  2. Clearly distinguish decorative container framing (`--border-strong`, 1.52:1) from interactive control boundaries.
+  3. Introduce `--border-control` (`rgba(19, 25, 21, 0.50)`) achieving 3.32:1 on canvas, 3.40:1 on surface, and 3.23:1 on subtle surface (WCAG 2.2 SC 1.4.11 compliant).
+  4. Expose `rule.control` in `tailwind.config.ts`.
+  5. Synchronize `PROJECT_PLAN.md` with accurate calculations, boundary rules, and audit findings.
+  6. Re-affirm the mandatory requirement to audit and verify project codebases for *TaxFlow* and *Cyber Crime Analytics* prior to publishing case studies in Stage 3.
+- **Explicit Exclusions**: Strictly NO UI component redesign; NO hero or navigation implementation; NO modification to `data/` or `src/data/`; NO package changes.
+- **Files Changed**: `src/app/globals.css`, `tailwind.config.ts`, `PROJECT_PLAN.md`.
+- **Verification Commands Executed**:
+  - `npm run test:content`: Passed (0 failures).
+  - `npx tsc --noEmit`: Passed (0 errors).
+  - `npm run build`: Passed (clean production build).
+  - Mathematical recalculation: `--border-control` verified at 3.32:1 (Canvas), 3.40:1 (Surface), 3.23:1 (Subtle Inset).
+- **Completion Evidence**: Synchronized plan, clean production build, verified Git diff.
+- **Git Requirement**: Commit `fix(stage-1): correct interactive border contrast documentation` -> Push to `origin/main` -> Verify push.
+- **Status**: **Completed (Remediation)**.
 
 
 ---
@@ -604,7 +634,8 @@ The active portfolio repository is an independent, original work:
 | Stage | Name | Status | Verified On | Commit Hash |
 | :--- | :--- | :---: | :---: | :---: |
 | **Stage 0** | Planning, Baseline Audit & Readiness Review | **Completed (Planning Only)** | 2026-10-14 | Baseline `69b61ee` |
-| **Stage 1** | Content Model & Design System Prep | **Completed (Verified)** | 2026-10-14 | Pending Commit |
+| **Stage 1** | Content Model & Design System Prep | **Completed (Verified)** | 2026-10-14 | `c017665` |
+| **Stage 1.1** | Contrast Correction & Plan Synchronization | **Completed (Remediation)** | 2026-10-14 | Pending Commit |
 | **Stage 2** | Masthead, Global Navigation & Hero | **Ready for Authorization** | — | — |
 | **Stage 3** | Flagship Systems & Case Studies | Blocked by Stage 2 | — | — |
 | **Stage 4** | Decision Journal & Analytical Essays | Blocked by Stage 3 | — | — |
@@ -612,15 +643,21 @@ The active portfolio repository is an independent, original work:
 | **Stage 6** | Comprehensive Verification & Audit | Blocked by Stage 5 | — | — |
 
 ### 12.2 Readiness Determination
-- **Stage 1 Status**: **STAGE 1 COMPLETE**.
+- **Stage 1 & 1.1 Status**: **STAGE 1 & 1.1 COMPLETE**.
 - **Evidence**:
   - Root `data/` safely preserved untouched; zero unique content lost.
   - Strictly typed schemas established in `src/data/types.ts` and reconciled across all data files.
   - Automated validation suite `scripts/validate-content.mjs` passing with 0 failures (`npm run test:content`).
-  - Direction A (Botanical Ink) semantic token architecture implemented in `src/app/globals.css` and `tailwind.config.ts`.
-  - Contrast ratios verified against WCAG 2.2 AA standards (Pine-Black: 16.25:1, Olive Slate: 7.22:1, Juniper Moss: 6.37:1, Bramble Rust: 6.29:1).
+  - Direction A (Botanical Ink) semantic token architecture active in `src/app/globals.css` and `tailwind.config.ts`.
+  - Independent contrast recalculation confirmed:
+    - Text Primary: **16.48:1** (AAA)
+    - Text Secondary: **7.40:1** (AAA)
+    - Text Muted: **4.90:1** (AA)
+    - Accent Primary (Juniper Moss): **6.82:1** (AA)
+    - Accent Secondary (Bramble Rust): **6.23:1** (AA)
+    - Decorative Container Border (`--border-strong`): **1.52:1** (Decorative only)
+    - Interactive Control Boundary (`--border-control`): **3.32:1** on canvas `#F7F6F1`, **3.40:1** on `#FFFFFF` (Passes WCAG 2.2 SC 1.4.11 ≥ 3.0:1)
   - Editorial typography (`Newsreader` + `Plus Jakarta Sans` + `JetBrains Mono`) active in `src/app/layout.tsx`.
-  - Isolated design specimen evaluated in browser at `/design-specimen` across desktop and 390px mobile viewports.
   - Production build (`npm run build`) succeeded with 0 errors.
 
 ### 12.3 Recommended Immediate Next Action
