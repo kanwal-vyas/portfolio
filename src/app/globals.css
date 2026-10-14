@@ -3,35 +3,131 @@
 @tailwind utilities;
 
 :root {
-  --navy: #060B18;
-  --navy-2: #0A1228;
-  --navy-3: #0F1A35;
-  --accent: #6C7FE0;
-  --accent-2: #A78BFA;
-  --text: #F0F4FF;
-  --text-2: #9BA8C9;
-  --text-3: #5A6480;
-  --border: rgba(108, 127, 224, 0.14);
-  --border-2: rgba(108, 127, 224, 0.25);
-  --glow: rgba(108, 127, 224, 0.07);
-  --card: rgba(12, 20, 45, 0.7);
+  /* ==========================================================================
+     Direction A: Botanical Ink (Editorial Technologist Design System)
+     Light / Editorial Canvas (Default Identity)
+     ========================================================================== */
+
+  /* Surface & Background Tokens */
+  --bg-canvas: #F7F6F1;             /* Warm Bone Linen Stone */
+  --bg-surface: #FFFFFF;            /* Alabaster Elevated Surface */
+  --bg-surface-subtle: #ECEAE2;     /* Inset Technical Surface */
+
+  /* Text & Typography Tokens */
+  --text-primary: #131915;          /* Deep Forest Pine-Black (Contrast: 16.2:1 against canvas) */
+  --text-secondary: #49534B;        /* Smoked Olive Slate (Contrast: 7.2:1 against canvas) */
+  --text-muted: #646E66;            /* Lichen Umber (Contrast: 4.8:1 against canvas) */
+
+  /* Accent & Highlight Tokens */
+  --accent-primary: #3F5E2B;        /* Chartreuse Olive / Juniper Moss (Contrast: 6.4:1 against canvas) */
+  --accent-primary-hover: #2E461F;
+  --accent-primary-surface: rgba(63, 94, 43, 0.08); /* Subtle badge/tag background */
+  --accent-secondary: #9E3C1B;      /* Dried Persimmon / Bramble Rust (Contrast: 6.3:1 against canvas) */
+  --accent-secondary-hover: #7D2E14;
+  --accent-secondary-surface: rgba(158, 60, 27, 0.08);
+
+  /* Border & Rule Tokens */
+  --border-subtle: rgba(19, 25, 21, 0.09); /* Hairline editorial rule */
+  --border-strong: rgba(19, 25, 21, 0.20); /* Card/input/focus border */
+
+  /* Interactive, Focus & Selection */
+  --focus-ring: #3F5E2B;
+  --selection-bg: rgba(63, 94, 43, 0.16);
+  --selection-text: #131915;
+
+  /* Code & Diagram Surfaces */
+  --code-bg: #ECEAE2;
+  --code-text: #131915;
+  --code-border: rgba(19, 25, 21, 0.12);
+
+  /* ==========================================================================
+     Backwards-Compatibility Aliases (Preserves Existing Components)
+     ========================================================================== */
+  --navy: var(--bg-canvas);
+  --navy-2: var(--bg-surface);
+  --navy-3: var(--bg-surface-subtle);
+  --accent: var(--accent-primary);
+  --accent-2: var(--accent-secondary);
+  --text: var(--text-primary);
+  --text-2: var(--text-secondary);
+  --text-3: var(--text-muted);
+  --border: var(--border-subtle);
+  --border-2: var(--border-strong);
+  --glow: rgba(63, 94, 43, 0.06);
+  --card: var(--bg-surface);
+
+  /* Font Aliases for Existing Components */
+  --font-sora: var(--font-newsreader);
+  --font-dm-sans: var(--font-plus-jakarta);
+}
+
+/* ==========================================================================
+   Nocturne Variant (Dark Theme Hypothesis)
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg-canvas: #101512;
+  --bg-surface: #171F1A;
+  --bg-surface-subtle: #1E2722;
+  --text-primary: #EDF2EE;
+  --text-secondary: #9CB0A1;
+  --text-muted: #6D7F72;
+  --accent-primary: #86B360;
+  --accent-primary-hover: #9DC777;
+  --accent-primary-surface: rgba(134, 179, 96, 0.12);
+  --accent-secondary: #E27552;
+  --accent-secondary-hover: #EDA085;
+  --accent-secondary-surface: rgba(226, 117, 82, 0.12);
+  --border-subtle: rgba(237, 242, 238, 0.08);
+  --border-strong: rgba(237, 242, 238, 0.20);
+  --focus-ring: #86B360;
+  --selection-bg: rgba(134, 179, 96, 0.25);
+  --selection-text: #EDF2EE;
+  --code-bg: #171F1A;
+  --code-text: #EDF2EE;
+  --code-border: rgba(237, 242, 238, 0.12);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
 }
 
 body {
-  background-color: var(--navy);
-  color: var(--text);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
   overflow-x: hidden;
+  font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--navy); }
-::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+/* Focus Indicator Standards (WCAG 2.2 AA) */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
 
-/* Selection */
-::selection { background: rgba(108, 127, 224, 0.25); color: var(--text); }
+/* Editorial Typography Defaults */
+h1, h2, h3, .font-serif {
+  font-family: var(--font-newsreader), Charter, Georgia, Cambria, "Times New Roman", serif;
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Text Selection */
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}

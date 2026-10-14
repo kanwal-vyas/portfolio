@@ -1,25 +1,33 @@
 import type { Metadata } from "next";
-import { Sora, DM_Sans } from "next/font/google";
+import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const sora = Sora({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-newsreader",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["300", "400", "500", "600"],
+  variable: "--font-plus-jakarta",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Kanwal Vyas — Technology. Data. Decision Making.",
   description:
-    "Cybersecurity student at CSE, IIT Madras BS in Data Science. Builder, analyst, and leader interested in understanding complex systems and making better decisions with technology and data.",
+    "Cybersecurity undergraduate at CSE, IIT Madras BS in Data Science. Builder, analyst, and student leader operating at the intersection of technology, empirical data, and structured decision making.",
   keywords: [
     "Kanwal Vyas",
     "Cybersecurity",
@@ -27,11 +35,12 @@ export const metadata: Metadata = {
     "IIT Madras",
     "Portfolio",
     "Systems Thinking",
+    "Decision Making",
   ],
   openGraph: {
     title: "Kanwal Vyas — Technology. Data. Decision Making.",
     description:
-      "Cybersecurity student pursuing IIT Madras BS in Data Science. Builder, analyst, leader.",
+      "Cybersecurity undergraduate pursuing IIT Madras BS in Data Science. Builder, analyst, leader.",
     type: "website",
   },
 };
@@ -42,8 +51,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sora.variable} ${dmSans.variable}`}>
-      <body className="font-dm antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`${newsreader.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

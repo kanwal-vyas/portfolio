@@ -1,34 +1,22 @@
-export type ExploreStage = "Beginning" | "Developing" | "Expanding" | "Advanced Understanding";
+import type {
+  JournalEntry,
+  ExploreStage,
+  ExploreItem,
+} from "./types";
 
-export interface ExploreItem {
-  topic: string;
-  stage: ExploreStage;
-  /** 1–4 pips filled */
-  level: 1 | 2 | 3 | 4;
-  wide?: boolean;
-}
+export type { JournalEntry, ExploreStage, ExploreItem };
 
-export const exploreItems: ExploreItem[] = [
-  { topic: "Cybersecurity", stage: "Advanced Understanding", level: 4 },
-  { topic: "Data Science", stage: "Expanding", level: 3 },
-  { topic: "Statistical Thinking", stage: "Developing", level: 2 },
-  { topic: "Leadership", stage: "Expanding", level: 3 },
-  { topic: "Business Strategy", stage: "Developing", level: 2, wide: true },
-];
-
-export interface JournalEntry {
-  id: string;
-  tag: string;
-  readTime: string;
-  title: string;
-  preview: string;
-  date: string;
-  body: string[];
-}
-
+/**
+ * Analytical Decision Journal & Essays
+ * Reconciled dataset combining src/data/writing.ts and root data/journal.ts.
+ * Preserves stable 'j1', 'j2', 'j3' IDs for existing component compatibility,
+ * attaches descriptive slug strings from data/journal.ts, and enforces the
+ * Journal Content Quality Gate by excluding empty stubs and placeholders.
+ */
 export const journalEntries: JournalEntry[] = [
   {
     id: "j1",
+    slug: "club-finances-decision-making",
     tag: "Finance · Leadership",
     readTime: "4 min read",
     title: "What Managing Club Finances Taught Me About Decision Making",
@@ -44,6 +32,7 @@ export const journalEntries: JournalEntry[] = [
   },
   {
     id: "j2",
+    slug: "why-iitm-bs",
     tag: "Education · Career",
     readTime: "3 min read",
     title: "Why I Joined the IIT Madras BS Programme",
@@ -59,6 +48,7 @@ export const journalEntries: JournalEntry[] = [
   },
   {
     id: "j3",
+    slug: "academic-resource-hub-lessons",
     tag: "Product · Reflection",
     readTime: "5 min read",
     title: "Lessons From Building Academic Resource Hub",
@@ -75,7 +65,23 @@ export const journalEntries: JournalEntry[] = [
   },
 ];
 
-export const writingTopics = [
+/**
+ * Exploration Domain Items
+ * Preserves contract required by src/components/sections/Exploration.tsx
+ */
+export const exploreItems: ExploreItem[] = [
+  { topic: "Cybersecurity", stage: "Advanced Understanding", level: 4 },
+  { topic: "Data Science", stage: "Expanding", level: 3 },
+  { topic: "Statistical Thinking", stage: "Developing", level: 2 },
+  { topic: "Leadership", stage: "Expanding", level: 3 },
+  { topic: "Business Strategy", stage: "Developing", level: 2, wide: true },
+];
+
+/**
+ * Writing Topics List
+ * Preserves contract required by src/components/sections/Writing.tsx
+ */
+export const writingTopics: string[] = [
   "Cybersecurity + Data Science",
   "Data-Driven Leadership",
   "Building as a Student",

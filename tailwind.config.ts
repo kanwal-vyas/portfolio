@@ -9,26 +9,75 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sora: ["var(--font-sora)", "sans-serif"],
+        serif: [
+          "var(--font-newsreader)",
+          "Charter",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "serif",
+        ],
+        sans: [
+          "var(--font-plus-jakarta)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-jetbrains-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
+        // Legacy font aliases for backwards compatibility
+        sora: ["var(--font-sora)", "serif"],
         dm: ["var(--font-dm-sans)", "sans-serif"],
       },
       colors: {
-        navy: {
-          DEFAULT: "#060B18",
-          2: "#0A1228",
-          3: "#0F1A35",
+        // Semantic Token System (Direction A: Botanical Ink)
+        canvas: "var(--bg-canvas)",
+        surface: {
+          DEFAULT: "var(--bg-surface)",
+          subtle: "var(--bg-surface-subtle)",
         },
-        indigo: {
-          deep: "#1B2A5C",
-          violet: "#2D3A7C",
+        content: {
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          muted: "var(--text-muted)",
         },
         accent: {
-          DEFAULT: "#6C7FE0",
-          2: "#A78BFA",
+          DEFAULT: "var(--accent-primary)",
+          hover: "var(--accent-primary-hover)",
+          surface: "var(--accent-primary-surface)",
+          2: "var(--accent-secondary)",
+        },
+        persimmon: {
+          DEFAULT: "var(--accent-secondary)",
+          hover: "var(--accent-secondary-hover)",
+          surface: "var(--accent-secondary-surface)",
+        },
+        rule: {
+          subtle: "var(--border-subtle)",
+          strong: "var(--border-strong)",
+        },
+        // Legacy color aliases for existing component compatibility
+        navy: {
+          DEFAULT: "var(--bg-canvas)",
+          2: "var(--bg-surface)",
+          3: "var(--bg-surface-subtle)",
+        },
+        indigo: {
+          deep: "var(--bg-surface-subtle)",
+          violet: "var(--accent-primary)",
         },
       },
       animation: {
-        "float": "float 7s ease-in-out infinite",
+        float: "float 7s ease-in-out infinite",
         "bg-pulse": "bgPulse 8s ease-in-out infinite alternate",
         "fade-up": "fadeUp 0.8s ease forwards",
       },
