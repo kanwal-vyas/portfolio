@@ -499,6 +499,54 @@ graph TD
 
 ---
 
+### Stage 2.1: Motion & Composition Refinement (Living Tropical Anomaly)
+- **Objective**: Evolve the Tropical Anomaly design system from a static technical notebook into an immersive, living editorial publication experience through typography-first motion choreography, dismantled table/spec panels, and open spatial rhythm.
+- **Reference-Library Investigation**:
+  - Inspected `portfolio-idea/` including `PORTFOLIO_REFERENCE_AUDIT_PRIVATE.md`, `PORTFOLIO_DESIGN_DIRECTIONS_PRIVATE.md`, and local source code in `goodie.work/`, `kadet.dev/`, `personal-portfolio/`.
+  - **Techniques Selected**:
+    1. *Masked Line Staging (`goodie.work/app/animations/title.js`)*: Overflow-masked upward typography reveal with custom exponential easing `[0.16, 1, 0.3, 1]`.
+    2. *Draw-In Accent Underline*: Dynamic `scaleX: 0 -> 1` highlight on key thematic words ("Data.").
+    3. *Living Tri-Axis Convergence Sculpture*: Replaces the rigid 5-row table / specification box with an interactive vector sculpture demonstrating the convergence of Cybersecurity, Data Science, and Governance.
+    4. *Open Editorial Triptych (`Philosophy.tsx`)*: Dismantled the 3 rounded boxy cards in favor of a generous, typography-led monograph spread with oversized numerals (`I. Systems`, `II. Analysis`, `III. Communication`).
+    5. *De-Cluttered Masthead Navigation*: Eliminated noisy `01`, `02` index numerals from primary desktop links; introduced smooth layoutId active indicator and tactile button press states.
+  - **Techniques Rejected**:
+    - Heavy WebGL/canvas meshes (`goodie.work`) and particle networks (`mattwilliams85`): Rejected due to accessibility liabilities, battery drain, and cognitive distraction.
+    - Generic card grids covering every section (`developerFolio`, `personal-portfolio`): Rejected because they produce cookie-cutter SaaS aesthetics.
+- **Scope Included**:
+  1. Centralized motion primitives in `src/lib/motion.ts` with strict `prefers-reduced-motion` safety.
+  2. Refined `src/components/ui/Nav.tsx`: Clean typography, living pulse dot, layoutId underline, accessible mobile drawer.
+  3. Transformed `src/components/sections/Hero.tsx`: Masked line reveals for "Technology.", "Data.", "Decision Making."; dismantled specification table into an interactive Tri-Axis Convergence Sculpture.
+  4. Transformed `src/components/sections/Philosophy.tsx`: Open typography triptych with generous whitespace replacing generic card containers.
+  5. Refined `src/app/page.tsx`: Streamlined section pacing and eliminated redundant horizontal line dividers.
+  6. Updated `src/app/design-specimen/page.tsx`: Added Stage 2.1 motion primitives specimen.
+- **Dependencies Added**: None (reused existing `framer-motion` 11.3.31).
+- **Files Actually Changed**:
+  - `src/lib/motion.ts` (new)
+  - `src/components/ui/Nav.tsx`
+  - `src/components/sections/Hero.tsx`
+  - `src/components/sections/Philosophy.tsx`
+  - `src/app/page.tsx`
+  - `src/app/design-specimen/page.tsx`
+  - `PROJECT_PLAN.md`
+- **Acceptance Criteria**:
+  - [x] Reference library inspected and techniques documented.
+  - [x] Masked line reveals operate smoothly with custom easing curve.
+  - [x] Rigid spec sheet replaced with interactive Tri-Axis Convergence Sculpture.
+  - [x] Generic 3-card box grid in Philosophy replaced with open editorial typography spread.
+  - [x] All motion respects `prefers-reduced-motion`.
+  - [x] Zero horizontal overflow verified down to 320px viewport width.
+- **Verification Commands Executed**:
+  - `npm run test:content`: Passed (0 failures).
+  - `node ./node_modules/typescript/bin/tsc --noEmit`: Passed (0 type errors).
+  - `npm run lint`: Passed (0 warnings, 0 errors).
+  - `node scripts/verify-contrast.mjs`: Passed (all contrast pairs verified).
+  - `node ./node_modules/next/dist/bin/next build`: Passed (clean production build).
+  - Browser subagent visual evaluation: Passed across 1536x864, 1024x768, 390x844, 320x568 viewports with zero horizontal overflow.
+- **Status**: **Completed (Stage 2.1)**.
+- **Stage 3 Prerequisites**: Independent verification gate for TaxFlow and Cyber Crime Analytics codebases remains mandatory prior to authoring or publishing case studies.
+
+---
+
 ### Stage 3: Flagship Systems & Engineering Case Studies
 - **Objective**: Present verified technical depth through real project case studies and architectural schematics.
 - **Scope Included**:

@@ -1,5 +1,4 @@
 import Nav from "@/components/ui/Nav";
-import Divider from "@/components/ui/Divider";
 import Hero from "@/components/sections/Hero";
 import Philosophy from "@/components/sections/Philosophy";
 import Trajectory from "@/components/sections/Trajectory";
@@ -16,30 +15,19 @@ import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen selection:bg-[var(--selection-bg)] selection:text-[var(--selection-text)]">
       <Nav />
       <Hero />
-      <Divider />
       <Philosophy />
-      <Divider />
       <Trajectory />
-      <Divider />
       <CaseStudy />
-      <Divider />
       <Exploration />
-      <Divider />
       <DataAnalytics />
-      <Divider />
       <Leadership />
-      <Divider />
       <StoriesSystems />
-      <Divider />
       <DecisionJournal />
-      <Divider />
       <Writing />
-      <Divider />
       <BeyondAcademics />
-      <Divider />
       <Contact />
       <Footer />
     </main>

@@ -1,8 +1,14 @@
 "use client";
 
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, ArrowUpRight, Shield, Database, Scale, Compass } from "lucide-react";
+import { easeEditorial } from "@/lib/motion";
 
 export default function Hero() {
+  const [activeAxis, setActiveAxis] = useState<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+
   const handleScroll = (href: string) => {
     const targetId = href.replace("#", "");
     const el = document.getElementById(targetId);
@@ -11,201 +17,290 @@ export default function Hero() {
     }
   };
 
+  const axes = [
+    {
+      id: 0,
+      title: "System Defenses",
+      desc: "Deterministic state validation & memory-safe invariants",
+      icon: Shield,
+      color: "var(--color-guava)",
+      tag: "CYBERSECURITY",
+    },
+    {
+      id: 1,
+      title: "Empirical Modeling",
+      desc: "Statistical inference & threat graph clustering",
+      icon: Database,
+      color: "var(--color-pool)",
+      tag: "IIT MADRAS BS",
+    },
+    {
+      id: 2,
+      title: "Governance Invariants",
+      desc: "Financial stewardship & disciplined resource trade-offs",
+      icon: Scale,
+      color: "var(--color-mango)",
+      tag: "DECISION MAKING",
+    },
+  ];
+
   return (
     <section
       id="home"
-      className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden"
+      className="relative pt-32 pb-24 md:pt-44 md:pb-36 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden"
     >
-      {/* Top Editorial Eyebrow & Issue Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-[var(--border-subtle)] font-mono text-xs">
-        <div className="flex items-center gap-2.5">
-          <span className="px-2.5 py-1 rounded text-[11px] font-bold bg-[var(--color-pistachio)] text-[var(--color-ink)] border border-[rgba(41,35,47,0.2)]">
-            FOLIO // 2026
-          </span>
-          <span className="text-[var(--text-secondary)] tracking-wide">
-            EDITORIAL THESIS &middot; DISCIPLINE CONVERGENCE
-          </span>
-        </div>
-        <div className="hidden sm:flex items-center gap-2 text-[var(--text-muted)]">
-          <span>CHENNAI &middot; ONLINE</span>
-          <span>&bull;</span>
-          <span className="text-[var(--color-ink)] font-medium">B.TECH CSE + IIT MADRAS BS</span>
-        </div>
+      {/* Editorial Eyebrow Tag */}
+      <div className="flex items-center gap-3 mb-8">
+        <motion.span
+          initial={shouldReduceMotion ? undefined : { opacity: 0, x: -12 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: easeEditorial }}
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[var(--color-pistachio)] text-[var(--color-ink)] border border-[rgba(41,35,47,0.2)]"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-ink)] animate-pulse" />
+          FOLIO // 2026
+        </motion.span>
+        <motion.span
+          initial={shouldReduceMotion ? undefined : { opacity: 0 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: easeEditorial }}
+          className="text-xs font-mono text-[var(--text-secondary)] tracking-wide hidden sm:inline"
+        >
+          ANALYTICAL SYSTEMS MONOGRAPH
+        </motion.span>
       </div>
 
-      {/* Main Asymmetric Grid: Headline & Thesis Spread */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-        {/* Left Column (8 cols): Expressive Typography & Positioning */}
-        <div className="lg:col-span-7 xl:col-span-8 space-y-8">
-          <div className="space-y-2">
-            <span className="inline-block font-mono text-xs uppercase tracking-widest text-[var(--color-guava-deep)] font-bold">
-              Personal Monograph &middot; Systems &amp; Data
-            </span>
-            <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl xl:text-[6.5rem] font-normal tracking-tight text-[var(--color-ink)] leading-[0.96]">
-              Technology.
-              <br />
-              <span className="relative inline-block my-1">
-                <span className="relative z-10 italic font-serif text-[var(--color-ink)] pr-4">
-                  Data.
-                </span>
-                <span
+      {/* Main Asymmetric Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Left Column (7 cols): Masked Typography & Narrative Staging */}
+        <div className="lg:col-span-7 space-y-8">
+          {/* Staggered Masked Headline */}
+          <div className="space-y-1">
+            {/* Line 1: Technology. */}
+            <div className="overflow-hidden py-1">
+              <motion.h1
+                initial={shouldReduceMotion ? undefined : { y: "115%", opacity: 0 }}
+                animate={shouldReduceMotion ? undefined : { y: "0%", opacity: 1 }}
+                transition={{ duration: 0.85, ease: easeEditorial }}
+                className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-normal tracking-tight text-[var(--color-ink)] leading-[0.94]"
+              >
+                Technology.
+              </motion.h1>
+            </div>
+
+            {/* Line 2: Data. with draw-in chromatic highlight */}
+            <div className="overflow-hidden py-1">
+              <motion.div
+                initial={shouldReduceMotion ? undefined : { y: "115%", opacity: 0 }}
+                animate={shouldReduceMotion ? undefined : { y: "0%", opacity: 1 }}
+                transition={{ duration: 0.85, delay: 0.12, ease: easeEditorial }}
+                className="relative inline-block font-serif text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-normal tracking-tight text-[var(--color-ink)] leading-[0.94]"
+              >
+                <span className="relative z-10 italic pr-4">Data.</span>
+                <motion.span
+                  initial={shouldReduceMotion ? undefined : { scaleX: 0 }}
+                  animate={shouldReduceMotion ? undefined : { scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.45, ease: easeEditorial }}
+                  style={{ transformOrigin: "left center" }}
                   aria-hidden="true"
-                  className="absolute bottom-2 left-0 right-2 h-4 sm:h-6 bg-[var(--color-mango)] -rotate-1 z-0 opacity-90 rounded-sm"
+                  className="absolute bottom-1.5 sm:bottom-3 left-0 right-2 h-4 sm:h-7 bg-[var(--color-mango)] -rotate-1 z-0 opacity-85 rounded-sm"
                 />
-              </span>
-              <br />
-              <span className="font-serif">Decision Making.</span>
-            </h1>
+              </motion.div>
+            </div>
+
+            {/* Line 3: Decision Making. */}
+            <div className="overflow-hidden py-1">
+              <motion.h2
+                initial={shouldReduceMotion ? undefined : { y: "115%", opacity: 0 }}
+                animate={shouldReduceMotion ? undefined : { y: "0%", opacity: 1 }}
+                transition={{ duration: 0.85, delay: 0.24, ease: easeEditorial }}
+                className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-normal tracking-tight text-[var(--color-ink)] leading-[0.94]"
+              >
+                Decision Making.
+              </motion.h2>
+            </div>
           </div>
 
-          <div className="space-y-5 max-w-2xl">
+          {/* Truthful Core Narrative */}
+          <motion.div
+            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: easeEditorial }}
+            className="space-y-4 max-w-xl"
+          >
             <p className="font-sans text-lg sm:text-xl text-[var(--color-ink)] leading-relaxed font-normal">
               Undergraduate in Computer Science &amp; Engineering specializing in{" "}
-              <strong className="font-semibold text-[var(--color-ink)] underline decoration-[var(--color-guava)] decoration-2 underline-offset-4">
+              <strong className="font-semibold underline decoration-[var(--color-guava)] decoration-2 underline-offset-4">
                 Cybersecurity
               </strong>
               , pursuing a parallel BS in{" "}
-              <strong className="font-semibold text-[var(--color-ink)] underline decoration-[var(--color-pool)] decoration-2 underline-offset-4">
+              <strong className="font-semibold underline decoration-[var(--color-pool)] decoration-2 underline-offset-4">
                 Data Science at IIT Madras
               </strong>
               .
             </p>
             <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed">
-              Operating at the intersection of technical resilience, empirical modeling, and
-              disciplined organizational governance. Investigating how software state machines,
-              structured threat data, and financial constraints shape real-world engineering
-              decisions.
+              Investigating the intersection of technical resilience, empirical data modeling,
+              and structured organizational governance. Focused on how deterministic state machines
+              and statistical evidence replace optimism in high-stakes systems.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Call to Actions */}
-          <div className="flex flex-wrap items-center gap-4 pt-3">
-            <button
+          {/* Tactile Action Buttons */}
+          <motion.div
+            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.52, ease: easeEditorial }}
+            className="flex flex-wrap items-center gap-4 pt-2"
+          >
+            <motion.button
               onClick={() => handleScroll("#work")}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-ink)] bg-[var(--color-guava)] hover:bg-[var(--color-mango)] border border-[var(--color-ink)] shadow-[3px_3px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+              whileHover={shouldReduceMotion ? undefined : { y: -2, x: 2 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-ink)] bg-[var(--color-guava)] hover:bg-[var(--color-mango)] border border-[var(--color-ink)] shadow-[3px_3px_0px_var(--color-ink)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
             >
               <span>Explore Flagship Systems</span>
-              <ArrowDown size={16} />
-            </button>
+              <ArrowDown size={15} />
+            </motion.button>
 
-            <button
+            <motion.button
               onClick={() => handleScroll("#journal")}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded text-sm font-mono font-medium tracking-wide text-[var(--color-ink)] bg-[var(--bg-surface)] hover:bg-[var(--color-pistachio)] border border-[var(--border-control)] shadow-[2px_2px_0px_rgba(41,35,47,0.15)] hover:shadow-[2px_2px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+              whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-sm font-mono font-medium text-[var(--color-ink)] bg-[var(--bg-surface)] hover:bg-[var(--color-pistachio)] border border-[var(--border-control)] shadow-[2px_2px_0px_rgba(41,35,47,0.15)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
             >
               <span>Decision Journal</span>
-              <ArrowUpRight size={16} className="text-[var(--text-secondary)]" />
-            </button>
+              <ArrowUpRight size={15} className="text-[var(--text-secondary)]" />
+            </motion.button>
 
             <button
               onClick={() => handleScroll("#contact")}
-              className="inline-flex items-center gap-1.5 px-4 py-3.5 text-xs font-mono font-semibold text-[var(--color-guava-deep)] hover:text-[var(--color-ink)] underline underline-offset-4 transition-colors bg-transparent border-none cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+              className="inline-flex items-center gap-1.5 px-3 py-3 text-xs font-mono font-bold text-[var(--color-guava-deep)] hover:text-[var(--color-ink)] underline underline-offset-4 transition-colors bg-transparent border-none cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
             >
               <span>Direct Dispatch &rarr;</span>
             </button>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Right Column (4-5 cols): Asymmetric Editorial Specimen / Thesis Card */}
-        <div className="lg:col-span-5 xl:col-span-4 space-y-6">
-          {/* Chromatic Visual Anchor Block */}
-          <div className="rounded-lg border-2 border-[var(--color-ink)] bg-[var(--bg-surface)] p-6 shadow-[5px_5px_0px_var(--color-ink)] relative overflow-hidden">
-            {/* Top Color Accent Ribbon */}
-            <div className="absolute top-0 left-0 right-0 h-2 flex">
-              <span className="flex-1 bg-[var(--color-guava)]" />
-              <span className="flex-1 bg-[var(--color-mango)]" />
-              <span className="flex-1 bg-[var(--color-pistachio)]" />
-              <span className="flex-1 bg-[var(--color-pool)]" />
-              <span className="flex-1 bg-[var(--color-lilac)]" />
+        {/* Right Column (5 cols): Living Asymmetric Convergence Sculpture */}
+        <motion.div
+          initial={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.96 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.35, ease: easeEditorial }}
+          className="lg:col-span-5 relative"
+        >
+          {/* Subtle Ambient Color Fields (Non-distracting layer) */}
+          <div
+            aria-hidden="true"
+            className="absolute -top-10 -right-10 w-64 h-64 rounded-full bg-[var(--color-pool)] opacity-20 blur-3xl pointer-events-none"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-10 -left-10 w-56 h-56 rounded-full bg-[var(--color-mango)] opacity-25 blur-3xl pointer-events-none"
+          />
+
+          {/* The Layered Monograph Card */}
+          <div className="relative rounded-2xl border-2 border-[var(--color-ink)] bg-[var(--bg-surface)] p-7 shadow-[6px_6px_0px_var(--color-ink)] overflow-hidden">
+            {/* Top Folio Ribbon */}
+            <div className="flex items-center justify-between pb-4 mb-5 border-b border-[var(--border-subtle)]">
+              <div className="flex items-center gap-2">
+                <Compass size={16} className="text-[var(--color-guava)]" />
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--color-ink)]">
+                  Tri-Axis Convergence
+                </span>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--color-pistachio)] text-[var(--color-ink)] font-bold">
+                CORE INVARIANTS
+              </span>
             </div>
 
-            <div className="pt-2 pb-4 border-b border-[var(--border-subtle)] flex items-center justify-between">
-              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--color-ink)]">
-                Specification 01 &bull; Foundations
-              </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[var(--color-pool)] text-[var(--color-ink)]">
-                ACTIVE FOCUS
-              </span>
+            {/* Interactive Tri-Axis Vectors (Replaces rigid table) */}
+            <div className="space-y-3">
+              {axes.map((axis) => {
+                const IconComponent = axis.icon;
+                const isHovered = activeAxis === axis.id;
+
+                return (
+                  <motion.div
+                    key={axis.id}
+                    onMouseEnter={() => setActiveAxis(axis.id)}
+                    onMouseLeave={() => setActiveAxis(null)}
+                    whileHover={shouldReduceMotion ? undefined : { x: 4 }}
+                    className={`p-3.5 rounded-xl border transition-all cursor-default ${
+                      isHovered
+                        ? "border-[var(--color-ink)] bg-[var(--bg-surface-subtle)] shadow-sm"
+                        : "border-[var(--border-subtle)] bg-transparent hover:border-[var(--border-control)]"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-2.5">
+                        <div
+                          className="p-1.5 rounded-md flex-shrink-0"
+                          style={{
+                            background: axis.color,
+                            color: "var(--color-ink)",
+                          }}
+                        >
+                          <IconComponent size={14} />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-sans text-sm font-bold text-[var(--color-ink)]">
+                              {axis.title}
+                            </span>
+                            <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                              [{axis.tag}]
+                            </span>
+                          </div>
+                          <p className="text-xs text-[var(--text-secondary)] font-sans mt-0.5 leading-snug">
+                            {axis.desc}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-mono text-[var(--color-guava-deep)] font-bold">
+                        0{axis.id + 1}
+                      </span>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            {/* Structured Invariant Rows */}
-            <dl className="divide-y divide-[var(--border-subtle)] my-4 text-xs font-mono">
-              <div className="py-2.5 flex justify-between gap-4">
-                <dt className="text-[var(--text-secondary)]">01. Primary Degree</dt>
-                <dd className="font-bold text-[var(--color-ink)] text-right">
-                  B.Tech CSE (Cybersecurity)
-                </dd>
-              </div>
-              <div className="py-2.5 flex justify-between gap-4">
-                <dt className="text-[var(--text-secondary)]">02. Parallel Study</dt>
-                <dd className="font-bold text-[var(--color-ink)] text-right">
-                  IIT Madras (BS Data Science)
-                </dd>
-              </div>
-              <div className="py-2.5 flex justify-between gap-4">
-                <dt className="text-[var(--text-secondary)]">03. Engineering Focus</dt>
-                <dd className="font-bold text-[var(--color-ink)] text-right">
-                  Deterministic State Machines
-                </dd>
-              </div>
-              <div className="py-2.5 flex justify-between gap-4">
-                <dt className="text-[var(--text-secondary)]">04. Analytical Focus</dt>
-                <dd className="font-bold text-[var(--color-ink)] text-right">
-                  Threat Graph Clustering
-                </dd>
-              </div>
-              <div className="py-2.5 flex justify-between gap-4">
-                <dt className="text-[var(--text-secondary)]">05. Stewardship</dt>
-                <dd className="font-bold text-[var(--color-ink)] text-right">
-                  Treasurer Lead &middot; Governance
-                </dd>
-              </div>
-            </dl>
-
-            {/* Editorial Quotation / Axiom */}
-            <div className="mt-5 p-3.5 rounded bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-guava-deep)] font-bold block mb-1">
-                Core Axiom
+            {/* Tactile Quotation Footnote */}
+            <div className="mt-6 pt-4 border-t border-[var(--border-subtle)] flex items-start gap-3">
+              <span className="font-serif text-2xl text-[var(--color-guava)] leading-none select-none">
+                &ldquo;
               </span>
               <p className="font-serif italic text-sm text-[var(--color-ink)] leading-snug">
-                &ldquo;Scarcity forces clarity. Architecture without mathematical invariants is
-                simply optimism disguised as code.&rdquo;
+                Scarcity forces clarity. Architecture without mathematical invariants is simply
+                optimism disguised as code.
               </p>
             </div>
           </div>
-
-          {/* Secondary Visual Interruption: Chromatic Note Block */}
-          <div className="p-4 rounded-md border border-[var(--border-control)] bg-[var(--color-mango)]/20 flex items-start gap-3.5">
-            <div className="w-4 h-4 rounded-full bg-[var(--color-guava)] flex-shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <span className="font-mono text-[11px] font-bold text-[var(--color-ink)] uppercase tracking-wider block">
-                Controlled Visual Chaos
-              </span>
-              <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed">
-                Stage 2 adopts the Tropical Anomaly visual identity: expressive chromatic accents,
-                sharp typographical rhythm, and uncompromised technical integrity.
-              </p>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Downward Editorial Continuity Divider */}
-      <div className="mt-16 pt-8 border-t border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-[var(--text-muted)]">
+      {/* Spacious Downward Section Continuity Indicator */}
+      <div className="mt-20 sm:mt-28 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-[var(--border-subtle)] font-mono text-xs text-[var(--text-muted)]">
         <div className="flex items-center gap-3">
-          <span className="w-8 h-px bg-[var(--color-ink)]" />
-          <span className="text-[var(--color-ink)] uppercase font-semibold">
-            Index 01 &rarr; Technical Philosophy
+          <motion.span
+            className="w-6 h-px bg-[var(--color-ink)]"
+            initial={shouldReduceMotion ? undefined : { scaleX: 0 }}
+            whileInView={shouldReduceMotion ? undefined : { scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          />
+          <span className="text-[var(--color-ink)] font-semibold uppercase tracking-wider">
+            CONTINUE EXPLORATION &middot; HOW I THINK
           </span>
         </div>
-        <div className="flex items-center gap-6">
-          <span>Three Invariants: Clarity &bull; Determinism &bull; Evidence</span>
-          <button
-            onClick={() => handleScroll("#philosophy")}
-            className="text-[var(--color-guava-deep)] font-bold hover:underline cursor-pointer bg-transparent border-none p-0"
-          >
-            Advance to Philosophy &darr;
-          </button>
-        </div>
+        <button
+          onClick={() => handleScroll("#philosophy")}
+          className="group inline-flex items-center gap-2 text-[var(--color-guava-deep)] font-bold hover:text-[var(--color-ink)] transition-colors bg-transparent border-none p-0 cursor-pointer"
+        >
+          <span>Pillars of Analysis</span>
+          <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform" />
+        </button>
       </div>
     </section>
   );

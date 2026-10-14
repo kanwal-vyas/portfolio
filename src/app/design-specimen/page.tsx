@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Design Token Specimen — Tropical Anomaly (Stage 2)",
-  description: "Isolated specimen for evaluating Tropical Anomaly design tokens, typography, and contrast.",
+  title: "Design Token & Motion Specimen — Tropical Anomaly (Stage 2.1)",
+  description: "Isolated specimen for evaluating Tropical Anomaly design tokens, typography, motion primitives, and contrast.",
 };
 
 export default function DesignSpecimenPage() {
@@ -15,14 +15,14 @@ export default function DesignSpecimenPage() {
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 bg-[var(--color-guava)] rounded-full animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-guava-deep)] font-bold">
-                Stage 2 Design Token Specimen
+                Stage 2.1 Design &amp; Motion Specimen
               </span>
             </div>
             <h1 className="font-serif text-3xl md:text-5xl font-semibold tracking-tight mt-2 text-[var(--text-primary)]">
-              Tropical Anomaly Palette
+              Tropical Anomaly &amp; Motion System
             </h1>
             <p className="font-mono text-xs text-[var(--text-secondary)] mt-1">
-              Expressive colour, unexpected combinations, and controlled editorial rhythm.
+              Expressive colour, masked typography reveals, open editorial triptychs, and WCAG 2.2 contrast compliance.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -78,7 +78,7 @@ export default function DesignSpecimenPage() {
               {/* Primary Guava Action */}
               <button
                 type="button"
-                className="inline-flex items-center justify-center px-5 py-3 rounded text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-ink)] bg-[var(--color-guava)] hover:bg-[var(--color-mango)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-full text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-ink)] bg-[var(--color-guava)] hover:bg-[var(--color-mango)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
               >
                 Guava Action Button
               </button>
@@ -86,7 +86,7 @@ export default function DesignSpecimenPage() {
               {/* Mango Static Action */}
               <button
                 type="button"
-                className="inline-flex items-center justify-center px-5 py-3 rounded text-sm font-mono font-bold tracking-wide text-[var(--color-ink)] bg-[var(--color-mango)] hover:bg-[var(--color-pistachio)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-full text-sm font-mono font-bold tracking-wide text-[var(--color-ink)] bg-[var(--color-mango)] hover:bg-[var(--color-pistachio)] border border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
               >
                 Mango Static Button
               </button>
@@ -101,74 +101,82 @@ export default function DesignSpecimenPage() {
             </div>
           </div>
 
+          {/* Motion System Documentation Card */}
+          <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border-2 border-[var(--color-ink)] shadow-[4px_4px_0px_var(--color-ink)] space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--color-ink)] bg-[var(--color-pistachio)] px-2.5 py-1 rounded-full border border-[var(--border-subtle)]">
+                Motion Primitives (Stage 2.1)
+              </span>
+              <span className="font-mono text-xs text-[var(--text-muted)]">
+                Framer Motion 11
+              </span>
+            </div>
+            <h3 className="font-serif text-2xl font-bold text-[var(--text-primary)]">
+              Choreographed Masked Reveals &amp; Living Geometry
+            </h3>
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              Adapted from editorial techniques observed in the reference library (`goodie.work`).
+              Lines rise out of overflow-masked containers using custom exponential easing
+              `[0.16, 1, 0.3, 1]`. All animations strictly respect `prefers-reduced-motion`.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="p-3 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
+                <span className="font-mono text-xs font-bold text-[var(--color-ink)] block">
+                  Masked Line Staging
+                </span>
+                <span className="text-xs text-[var(--text-secondary)]">
+                  `y: 115%` &rarr; `0%` inside masked overflow wrapper
+                </span>
+              </div>
+              <div className="p-3 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
+                <span className="font-mono text-xs font-bold text-[var(--color-ink)] block">
+                  Draw-in Highlight
+                </span>
+                <span className="text-xs text-[var(--text-secondary)]">
+                  `scaleX: 0` &rarr; `1` on key editorial words
+                </span>
+              </div>
+            </div>
+          </div>
+
           {/* Palette Swatches */}
           <div className="space-y-3">
             <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] block">
               03. The Seven Defining Palette Swatches
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-guava)] text-[var(--color-ink)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-guava)] text-[var(--color-ink)]">
                 <span className="font-mono text-xs font-bold block">Guava Punch</span>
                 <span className="font-mono text-[10px]">#FF5B4D</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-pistachio)] text-[var(--color-ink)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-pistachio)] text-[var(--color-ink)]">
                 <span className="font-mono text-xs font-bold block">Sour Pistachio</span>
                 <span className="font-mono text-[10px]">#D9EF68</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-mango)] text-[var(--color-ink)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-mango)] text-[var(--color-ink)]">
                 <span className="font-mono text-xs font-bold block">Mango Static</span>
                 <span className="font-mono text-[10px]">#F5BC45</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-pool)] text-[var(--color-ink)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-pool)] text-[var(--color-ink)]">
                 <span className="font-mono text-xs font-bold block">Pool Glass</span>
                 <span className="font-mono text-[10px]">#76CDB8</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-lilac)] text-[var(--color-ink)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-lilac)] text-[var(--color-ink)]">
                 <span className="font-mono text-xs font-bold block">Bruised Lilac</span>
                 <span className="font-mono text-[10px]">#B9A0E5</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-paper)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-paper)]">
                 <span className="font-mono text-xs font-bold block">Blackberry Ink</span>
                 <span className="font-mono text-[10px]">#29232F</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-paper)] text-[var(--color-ink)]">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-paper)] text-[var(--color-ink)]">
                 <span className="font-mono text-xs font-bold block">Peach Paper</span>
                 <span className="font-mono text-[10px]">#FFF0D8</span>
               </div>
-              <div className="p-3 rounded border border-[var(--color-ink)] bg-[var(--color-guava-deep)] text-white">
+              <div className="p-3 rounded-xl border border-[var(--color-ink)] bg-[var(--color-guava-deep)] text-white">
                 <span className="font-mono text-xs font-bold block">Deep Guava</span>
                 <span className="font-mono text-[10px]">#B32819</span>
               </div>
-            </div>
-          </div>
-
-          {/* Elevated Surface & Card Specimen */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border-2 border-[var(--color-ink)] shadow-[4px_4px_0px_var(--color-ink)] space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--color-ink)] bg-[var(--color-pistachio)] px-2 py-0.5 rounded border border-[var(--border-subtle)]">
-                Flagship Case Study Specimen
-              </span>
-              <span className="font-mono text-xs text-[var(--text-muted)]">
-                Verification: In Progress
-              </span>
-            </div>
-            <h3 className="font-serif text-2xl font-bold text-[var(--text-primary)]">
-              TaxFlow: Deterministic State Machine Engine
-            </h3>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              Automated compliance calculation engine with isolated state validation
-              and tamper-evident audit logs. Built with strict mathematical invariants.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-[var(--bg-surface-subtle)] text-[var(--color-ink)] border border-[var(--border-strong)]">
-                TypeScript
-              </span>
-              <span className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-[var(--bg-surface-subtle)] text-[var(--color-ink)] border border-[var(--border-strong)]">
-                Next.js App Router
-              </span>
-              <span className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-[var(--bg-surface-subtle)] text-[var(--color-ink)] border border-[var(--border-strong)]">
-                Finite State Machine
-              </span>
             </div>
           </div>
         </section>
@@ -176,7 +184,7 @@ export default function DesignSpecimenPage() {
         {/* Right Column: WCAG 2.2 Contrast Matrix & Technical Token Rules */}
         <section className="lg:col-span-5 space-y-10">
           {/* Contrast & Token Evaluation Table */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-control)] shadow-sm space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-control)] shadow-sm space-y-4">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] font-bold">
                 04. Measured WCAG 2.2 Ratios
@@ -231,7 +239,7 @@ export default function DesignSpecimenPage() {
           </div>
 
           {/* Technical Usage Constraints */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface-subtle)] border border-[var(--border-strong)] space-y-3 font-mono text-xs">
+          <div className="p-6 rounded-2xl bg-[var(--bg-surface-subtle)] border border-[var(--border-strong)] space-y-3 font-mono text-xs">
             <span className="font-bold text-[var(--color-ink)] uppercase block">
               05. Usage Constraints &amp; Rules
             </span>
@@ -248,24 +256,10 @@ export default function DesignSpecimenPage() {
               <li>
                 <strong>Interactive Control Borders</strong> use `--border-control` (`rgba(41,35,47,0.50)`), achieving 3.00:1 against Peach Paper.
               </li>
+              <li>
+                <strong>Reduced Motion</strong>: When `prefers-reduced-motion` is active, all masked translations are bypassed, rendering text immediately with subtle opacity fades.
+              </li>
             </ul>
-          </div>
-
-          {/* Code Specimen */}
-          <div className="p-6 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs uppercase text-[var(--text-muted)] font-bold">
-                06. JetBrains Mono Code Block
-              </span>
-              <span className="font-mono text-xs text-[var(--color-guava-deep)]">
-                TypeScript
-              </span>
-            </div>
-            <pre className="font-mono text-xs p-3 rounded bg-[var(--code-bg)] text-[var(--code-text)] border border-[var(--border-control)] overflow-x-auto leading-relaxed">
-{`// Tropical Anomaly Token Check
-const contrast = calculateContrast("#29232F", "#D9EF68");
-console.log(contrast); // 11.99:1 (WCAG AAA)`}
-            </pre>
           </div>
         </section>
       </div>
