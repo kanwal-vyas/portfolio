@@ -660,6 +660,71 @@ graph TD
 
 ---
 
+### Stage 2.4: Reference-Driven Motion Design & Typography Refinement
+- **Objective**: Take direct inspiration from the private portfolio reference library (`portfolio-idea`), particularly `goodie.work`, to audit actual typography implementations, extract authoritative motion choreography patterns, evaluate typographic alternatives against the established Tropical Anomaly visual identity, and implement a refined, cohesive motion system in Next.js 15.
+- **Reference Investigation & Audit Findings**:
+  1. *`goodie.work` Typography Audit (Confirmed Evidence)*:
+     - **Font Serif**: Identified in `styles/utils/variables.scss` (`$font-serif: "Manuscribe Free", sans-serif;`) and loaded in `views/base.pug` via `https://fonts.cdnfonts.com/css/manuscribe-free`.
+       - *Characteristics*: Casual, hand-drawn cursive script with dramatic flourishes, rough ink edges, and irregular baselines.
+       - *Licensing*: Free for personal use only demo font; commercial license required from font creator.
+       - *Evaluation & Decision*: **Rejected for active portfolio**. `Manuscribe Free` is designed for artisanal boutique agencies or fashion portfolios. It completely contradicts the analytical, mathematical rigor demanded by Kanwal's dual-track positioning in Cybersecurity (zero-trust state machines, memory safety) and Data Science at IIT Madras.
+     - **Font Sans**: Identified in `styles/utils/variables.scss` (`$font-sans: "clash display", sans-serif;`) and loaded in `views/base.pug` via `https://api.fontshare.com/v2/css?f[]=clash-display@1&display=swap`.
+       - *Characteristics*: Geometric display sans designed by Indian Type Foundry (ITF) with tight spacing and distinct modern glyphs.
+       - *Licensing*: Free for personal and commercial use under Fontshare terms.
+       - *Evaluation & Decision*: **Evaluated; existing stack retained**. While Clash Display is bold, `Plus Jakarta Sans` offers superior legibility at body copy scales (13–17px) and clean variable rendering, while `Newsreader` provides authentic editorial gravity for display headlines.
+  2. *Final Typography Decision*:
+     - **Display Headline & Axioms**: Retained `Newsreader` (Roman 700 + Italic 400). Provides monumental editorial character, high stroke contrast, and intellectual depth without the frivolousness of cursive scripts.
+     - **Body Text**: Retained `Plus Jakarta Sans` (400/500). Delivers razor-sharp optical clarity for complex technical prose and academic narratives.
+     - **Technical Metadata & Folio Coordinates**: Retained `JetBrains Mono` (Bold 700). Conveys archival precision for specimen coordinates, timestamps, and cryptographic badges.
+     - **Composition Testing**: Verified in real rendered viewports at 1536x864, 1024x768, 390x844, and 320x568 with confirmed zero clipping, natural line breaks, and robust WCAG 2.2 AA contrast.
+  3. *Reference Audit Matrix*:
+
+| Reference | Technique | Evidence Inspected | Proposed Adaptation | Decision |
+| :--- | :--- | :--- | :--- | :--- |
+| `goodie.work` | Polygon curtain reveal | `app/classes/Reveal.js`: `clipPath: polygon(...)` + scale `1.02` -> `1.0` | Created `clipPathCurtainVariants` in `src/lib/motion.ts` | **Adopted** for section titles & philosophy pillars |
+| `goodie.work` | Exponential easing curve | `styles/utils/variables.scss`: `$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1)` | Exported `easeExpo = [0.19, 1, 0.22, 1]` in `src/lib/motion.ts` | **Adopted** across all portfolio motion |
+| `goodie.work` | Page transitions | `app/animations/pageTransition.js`: GSAP timeline curtain wipe | Implemented client `src/app/template.tsx` with `routeTransitionVariants` | **Adopted** cleanly in Next.js App Router |
+| `goodie.work` | WebGL canvas meshes | `app/classes/Canvas/`: Three.js / WebGL background rendering | Evaluated bundle cost and runtime battery impact | **Rejected**; CSS/SVG achieves desired depth with zero extra KB |
+| `developerFolio` | Lottie JSON animations | `src/components/displayLottie/` | Evaluated for technical monograph | **Rejected**; contradicts editorial gravity and adds bundle weight |
+| `kadet.dev` | Monospace metadata tags | Svelte component headers with uppercase mono tags | Refined folio stamps and archival specimen indicators | **Adopted** |
+| `mattwilliams85.github.io` | Non-boxed editorial pacing | Clean single-column layout without nested card borders | Refined Philosophy section into open typographic triptych | **Adopted** |
+| `personal-portfolio` | Scroll-linked progress bar | Header scroll indicator | Evaluated for single-page portfolio | **Rejected**; Masthead provides clear section links |
+
+- **Motion System Architecture (`src/lib/motion.ts`)**:
+  - `easeExpo`: Authoritative exponential easing curve `[0.19, 1, 0.22, 1]` ($ease-out-expo).
+  - `clipPathCurtainVariants`: Polygon reveal (`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)` -> `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`) with scale settling (`1.02` -> `1.0`).
+  - `headlineCurtainVariants`: Masked translate-y with clip-path curtain and exponential easing for display headings.
+  - `specimenPlateVariants`: Archival specimen plate entrance with scale settling and -1.5deg tilt.
+  - `routeTransitionVariants`: App Router page transitions via `template.tsx` with curtain wipe and exit fade.
+  - `drawInVariants`: Horizontal scaleX draw-in for chromatic accent ribbons.
+  - `tactileButton`: Brutalist button physics with offset translations and shadow collapse.
+  - `reducedMotionVariants`: Instant opacity transition with zero translation, rotation, or clipping when `prefers-reduced-motion` is active.
+- **Implemented Features**:
+  1. *App Router Page Transitions*: Added client `src/app/template.tsx` applying `routeTransitionVariants` with strict `useReducedMotion()` bypass during page navigation between `/` and `/design-specimen`.
+  2. *Hero Choreography*: Updated display words ("Technology.", "Data.", "Decision Making.") with `headlineCurtainVariants`, exponential easing `easeExpo`, draw-in accent ribbon on "Data.", `specimenPlateVariants` on the archival plate, and `tactileButton` physics on CTA buttons.
+  3. *Philosophy Choreography*: Integrated `clipPathCurtainVariants` on the 3 invariant pillars and masked curtain reveal on the section heading ("How I Think.").
+  4. *Design Specimen Documentation*: Updated `src/app/design-specimen/page.tsx` with complete Stage 2.4 reference findings, motion primitive documentation, and typography evaluation.
+- **Files Actually Changed**:
+  - `src/lib/motion.ts`
+  - `src/app/template.tsx`
+  - `src/components/sections/Hero.tsx`
+  - `src/components/sections/Philosophy.tsx`
+  - `src/app/design-specimen/page.tsx`
+  - `PROJECT_PLAN.md`
+- **Dependencies**: Zero external dependencies added. Reused existing `framer-motion` (v11.3.31). No GSAP or WebGL libraries added.
+- **Verification Commands Executed**:
+  - `npm run test:content`: Passed (0 failures).
+  - `npx tsc --noEmit`: Passed (0 type errors).
+  - `npm run lint`: Passed (0 warnings, 0 errors).
+  - `node scripts/verify-contrast.mjs`: Passed (all contrast pairs verified).
+  - `npm run build`: Passed (clean production build, all static routes prerendered).
+  - Browser subagent visual evaluation: Passed across 1536x864, 1024x768, 390x844, and 320x568 viewports with screenshot capture and zero horizontal scroll.
+- **Status**: **Completed (Stage 2.4)**.
+- **Commit**: `7c961f7`.
+- **Stage 3 Boundary**: Stage 3 remains strictly unauthorized and has not started. All project case studies and verification statuses remain strictly untouched.
+
+---
+
 ### Stage 3: Flagship Systems & Engineering Case Studies
 - **Objective**: Present verified technical depth through real project case studies and architectural schematics.
 - **Scope Included**:
@@ -819,22 +884,23 @@ The active portfolio repository is an independent, original work:
 | **Stage 2.1** | Living Motion & Spatial Composition | **Completed (Verified)** | 2026-10-14 | `e98f744` |
 | **Stage 2.2** | Experimental Art Direction & Immersive Transformation | **Completed (Verified)** | 2026-10-14 | `bc9fdad` |
 | **Stage 2.3** | Visual Audit, Art Direction Refinement & Final Homepage Polish | **Completed (Verified)** | 2026-10-15 | `f9d0b7d` |
+| **Stage 2.4** | Reference-Driven Motion Design & Typography Refinement | **Completed (Verified)** | 2026-10-15 | `7c961f7` |
 | **Stage 3** | Flagship Systems & Case Studies | **Preconditions Ready; Awaiting Authorization** | — | — |
 | **Stage 4** | Decision Journal & Analytical Essays | Blocked by Stage 3 | — | — |
 | **Stage 5** | Academic Trajectory & Verified Contact | Blocked by Stage 4 | — | — |
 | **Stage 6** | Comprehensive Verification & Audit | Blocked by Stage 5 | — | — |
 
 ### 12.2 Readiness Determination
-- **Stage 2.3 Status**: **STAGE 2.3 COMPLETE AND VERIFIED**.
+- **Stage 2.4 Status**: **STAGE 2.4 COMPLETE AND VERIFIED**.
 - **Evidence**:
-  - Full critical visual audit conducted against the 10 core questions using real rendered browser sessions across 4 viewports (1536x864, 1024x768, 390x844, 320x568).
-  - First-viewport balance calibrated so colossal Newsreader headline, narrative lead, full CTA button suite, and the physical-digital assemblage (Cryptographic State Wafer + Archival Specimen Plate) all comfortably reside above the fold without clipping on desktop and tablet.
-  - Tilted monograph card dismantled from a 3-box dashboard panel into a museum-grade typographic dossier with zero nested boxes, delicate hairlines, Newsreader axiom footnote, and overlapping physical tape badge (`VERIFIED PROOF`).
-  - Cryptographic wafer refined from a generic CAD/radar wireframe into an art-directed mechanical-cryptographic talisman with outer caliper track, cardinal alignment beads, counter-rotating geodetic lattice, and central invariant state core.
-  - Mobile action buttons stack cleanly with full-width confident touch targets (`w-full sm:w-auto`) and zero overflow down to 320px narrow mobile screens.
-  - Clunky bottom transition banner removed in favor of a clean, architectural horizon into Section 01 (`Philosophy`).
-  - Full `prefers-reduced-motion` compliance preserved; zero reliance on animation for content visibility.
-  - Verification suite: `npm run test:content` (0 failures), `npx tsc --noEmit` (0 errors), `npm run lint` (0 errors), `node scripts/verify-contrast.mjs` (all pairs verified), `npm run build` (clean production build, all static routes prerendered).
+  - Direct source audit of private reference library (`portfolio-idea`), particularly `goodie.work`.
+  - Confirmed `goodie.work` typography: `$font-serif: "Manuscribe Free"` (hand-drawn cursive calligraphy, rejected as tonally unsuitable for cybersecurity and mathematical data science) and `$font-sans: "clash display"`.
+  - Final typography decision: Retained and verified the active typography stack (`Newsreader` display Roman 700 + Italic 400, `Plus Jakarta Sans` body copy 400/500, `JetBrains Mono` technical coordinates 700) for authentic academic gravity and systems clarity.
+  - Extracted and implemented core motion patterns in `src/lib/motion.ts`: exponential easing curve `easeExpo` (`[0.19, 1, 0.22, 1]`), polygon clip-path curtain reveal `clipPathCurtainVariants`, masked headline curtain `headlineCurtainVariants`, specimen plate entrance `specimenPlateVariants`, draw-in ribbon `drawInVariants`, and tactile brutalist button physics `tactileButton`.
+  - App Router route transition implemented in `src/app/template.tsx` with smooth cross-page curtain wipe and instant `useReducedMotion()` bypass.
+  - Philosophy triptych updated with `clipPathCurtainVariants` on all three invariant pillars and masked curtain reveal on "How I Think.".
+  - Full responsive and accessibility verification across all four viewports (`1536x864`, `1024x768`, `390x844`, `320x568`) with zero horizontal overflow, zero console errors, and full `prefers-reduced-motion` compliance.
+  - Complete verification suite passed: `npm run test:content` (0 failures), `npx tsc --noEmit` (0 errors), `npm run lint` (0 errors), `node scripts/verify-contrast.mjs` (all semantic tokens pass WCAG 2.2 AA/AAA), `npm run build` (clean production build).
 
 ### 12.3 Recommended Immediate Next Action
 Await user review and authorization for **Stage 3: Flagship Systems & Engineering Case Studies**, preceded by independent verification of TaxFlow and Cyber Crime Analytics repositories. Stage 3 remains strictly unauthorized.

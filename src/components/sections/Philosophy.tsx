@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { easeEditorial } from "@/lib/motion";
+import { easeExpo, clipPathCurtainVariants } from "@/lib/motion";
 
 const pillars = [
   {
@@ -43,9 +43,17 @@ export default function Philosophy() {
               {"//"} 01 &middot; Framework
             </span>
           </div>
-          <h2 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-ink)]">
-            How I Think.
-          </h2>
+          <div className="overflow-hidden">
+            <motion.h2
+              initial={shouldReduceMotion ? undefined : { y: "100%", opacity: 0 }}
+              whileInView={shouldReduceMotion ? undefined : { y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.8, ease: easeExpo }}
+              className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-ink)]"
+            >
+              How I Think.
+            </motion.h2>
+          </div>
         </div>
         <p className="font-sans text-base text-[var(--text-secondary)] max-w-md leading-relaxed">
           Not an inventory of software tools, but a disciplined way of reasoning through complex,
@@ -53,19 +61,16 @@ export default function Philosophy() {
         </p>
       </div>
 
-      {/* Open Editorial Triptych (Replaces 3 generic boxy cards) */}
+      {/* Open Editorial Triptych with Curtain Reveal and Exponential Easing */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
         {pillars.map((pillar, i) => (
           <motion.div
             key={pillar.num}
-            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            variants={shouldReduceMotion ? undefined : clipPathCurtainVariants}
+            initial={shouldReduceMotion ? undefined : "hidden"}
+            whileInView={shouldReduceMotion ? undefined : "visible"}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{
-              duration: 0.75,
-              delay: i * 0.12,
-              ease: easeEditorial,
-            }}
+            custom={i * 0.12}
             className="group relative flex flex-col justify-between pt-6 border-t-2 border-[var(--border-subtle)] hover:border-[var(--color-ink)] transition-colors duration-300"
           >
             {/* Top Indicator Accent */}

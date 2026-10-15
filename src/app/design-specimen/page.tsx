@@ -105,35 +105,51 @@ export default function DesignSpecimenPage() {
           <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border-2 border-[var(--color-ink)] shadow-[4px_4px_0px_var(--color-ink)] space-y-4">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--color-ink)] bg-[var(--color-pistachio)] px-2.5 py-1 rounded-full border border-[var(--border-subtle)]">
-                Motion Primitives (Stage 2.1)
+                Motion &amp; Typography Primitives (Stage 2.4)
               </span>
               <span className="font-mono text-xs text-[var(--text-muted)]">
-                Framer Motion 11
+                Framer Motion 11 + goodie.work Audit
               </span>
             </div>
             <h3 className="font-serif text-2xl font-bold text-[var(--text-primary)]">
-              Choreographed Masked Reveals &amp; Living Geometry
+              Reference-Driven Choreography &amp; Typographic Discipline
             </h3>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              Adapted from editorial techniques observed in the reference library (`goodie.work`).
-              Lines rise out of overflow-masked containers using custom exponential easing
-              `[0.16, 1, 0.3, 1]`. All animations strictly respect `prefers-reduced-motion`.
+              Synthesized from direct source audits of <code className="font-mono text-xs bg-[var(--bg-surface-subtle)] px-1 py-0.5 rounded border border-[var(--border-subtle)]">goodie.work</code>.
+              Animations utilize the signature exponential easing curve <code className="font-mono text-xs bg-[var(--bg-surface-subtle)] px-1 py-0.5 rounded border border-[var(--border-subtle)]">[0.19, 1, 0.22, 1]</code> ($ease-out-expo)
+              and polygon clip-path curtain reveals. Route transitions in Next.js App Router utilize client <code className="font-mono text-xs bg-[var(--bg-surface-subtle)] px-1 py-0.5 rounded border border-[var(--border-subtle)]">template.tsx</code>.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
                 <span className="font-mono text-xs font-bold text-[var(--color-ink)] block">
-                  Masked Line Staging
+                  Polygon Curtain Reveal
                 </span>
                 <span className="text-xs text-[var(--text-secondary)]">
-                  `y: 115%` &rarr; `0%` inside masked overflow wrapper
+                  `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)` with scale settling (1.02 &rarr; 1.0)
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
                 <span className="font-mono text-xs font-bold text-[var(--color-ink)] block">
-                  Draw-in Highlight
+                  Exponential Curve ($ease-out-expo)
                 </span>
                 <span className="text-xs text-[var(--text-secondary)]">
-                  `scaleX: 0` &rarr; `1` on key editorial words
+                  `cubic-bezier(0.19, 1, 0.22, 1)` for razor-sharp deceleration
+                </span>
+              </div>
+              <div className="p-3 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
+                <span className="font-mono text-xs font-bold text-[var(--color-ink)] block">
+                  Tactile Brutalist Physics
+                </span>
+                <span className="text-xs text-[var(--text-secondary)]">
+                  Offset translations with shadow collapse on hover/tap
+                </span>
+              </div>
+              <div className="p-3 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
+                <span className="font-mono text-xs font-bold text-[var(--color-ink)] block">
+                  Typographic Verification
+                </span>
+                <span className="text-xs text-[var(--text-secondary)]">
+                  Audited Manuscribe Free vs Newsreader; retained Newsreader for academic/systems gravity
                 </span>
               </div>
             </div>

@@ -3,7 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Terminal, Sparkles } from "lucide-react";
-import { easeEditorial } from "@/lib/motion";
+import {
+  easeExpo,
+  easeEditorial,
+  headlineCurtainVariants,
+  specimenPlateVariants,
+  drawInVariants,
+  tactileButton,
+} from "@/lib/motion";
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -104,9 +111,10 @@ export default function Hero() {
               {/* Word 1: TECHNOLOGY (Oversized, Roman Display Serif) */}
               <div className="overflow-hidden py-0.5">
                 <motion.h1
-                  initial={shouldReduceMotion ? undefined : { y: "110%", opacity: 0 }}
-                  animate={shouldReduceMotion ? undefined : { y: "0%", opacity: 1 }}
-                  transition={{ duration: 0.8, ease: easeEditorial }}
+                  variants={shouldReduceMotion ? undefined : headlineCurtainVariants}
+                  initial={shouldReduceMotion ? undefined : "hidden"}
+                  animate={shouldReduceMotion ? undefined : "visible"}
+                  custom={0}
                   className="font-serif text-5xl sm:text-6xl md:text-[4.2rem] lg:text-[5.2rem] xl:text-[6.2rem] font-bold tracking-tight text-[var(--color-ink)] leading-[0.85] select-none"
                 >
                   Technology.
@@ -116,9 +124,10 @@ export default function Hero() {
               {/* Word 2: DATA (Expressive Italic with Tactile Sour Pistachio Backing Ribbon) */}
               <div className="overflow-hidden py-0.5">
                 <motion.div
-                  initial={shouldReduceMotion ? undefined : { y: "110%", opacity: 0 }}
-                  animate={shouldReduceMotion ? undefined : { y: "0%", opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.08, ease: easeEditorial }}
+                  variants={shouldReduceMotion ? undefined : headlineCurtainVariants}
+                  initial={shouldReduceMotion ? undefined : "hidden"}
+                  animate={shouldReduceMotion ? undefined : "visible"}
+                  custom={0.08}
                   className="relative inline-block"
                 >
                   <span className="relative z-10 font-serif italic text-5xl sm:text-6xl md:text-[4.2rem] lg:text-[5.2rem] xl:text-[6.2rem] font-normal tracking-tight text-[var(--color-ink)] leading-[0.85] pr-5 select-none">
@@ -126,9 +135,10 @@ export default function Hero() {
                   </span>
                   {/* Physical Chromatic Highlight Ribbon */}
                   <motion.span
-                    initial={shouldReduceMotion ? undefined : { scaleX: 0 }}
-                    animate={shouldReduceMotion ? undefined : { scaleX: 1 }}
-                    transition={{ duration: 0.65, delay: 0.35, ease: easeEditorial }}
+                    variants={shouldReduceMotion ? undefined : drawInVariants}
+                    initial={shouldReduceMotion ? undefined : "hidden"}
+                    animate={shouldReduceMotion ? undefined : "visible"}
+                    custom={0.35}
                     style={{ transformOrigin: "left center" }}
                     aria-hidden="true"
                     className="absolute bottom-1 sm:bottom-2 left-0 right-2 h-4 sm:h-7 md:h-9 bg-[var(--color-pistachio)] border-2 border-[var(--color-ink)] shadow-[3px_3px_0px_var(--color-ink)] -rotate-1 z-0 rounded-sm"
@@ -139,9 +149,10 @@ export default function Hero() {
               {/* Word 3: DECISION MAKING (Heavy Grounding Serif) */}
               <div className="overflow-hidden py-0.5">
                 <motion.h2
-                  initial={shouldReduceMotion ? undefined : { y: "110%", opacity: 0 }}
-                  animate={shouldReduceMotion ? undefined : { y: "0%", opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.16, ease: easeEditorial }}
+                  variants={shouldReduceMotion ? undefined : headlineCurtainVariants}
+                  initial={shouldReduceMotion ? undefined : "hidden"}
+                  animate={shouldReduceMotion ? undefined : "visible"}
+                  custom={0.16}
                   className="font-serif text-4xl sm:text-5xl md:text-[3.6rem] lg:text-[4.4rem] xl:text-[5.3rem] font-bold tracking-tight text-[var(--color-ink)] leading-[0.87] select-none"
                 >
                   Decision Making.
@@ -153,7 +164,7 @@ export default function Hero() {
             <motion.div
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25, ease: easeEditorial }}
+              transition={{ duration: 0.7, delay: 0.25, ease: easeExpo }}
               className="space-y-2.5 max-w-lg"
             >
               <p className="font-sans text-sm sm:text-base md:text-[17px] text-[var(--color-ink)] leading-snug font-medium">
@@ -178,14 +189,14 @@ export default function Hero() {
             <motion.div
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: easeEditorial }}
+              transition={{ duration: 0.7, delay: 0.35, ease: easeExpo }}
               className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-1"
             >
               <motion.button
                 onClick={() => handleScroll("#work")}
-                whileHover={shouldReduceMotion ? undefined : { y: -2, x: 2 }}
-                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-paper)] bg-[var(--color-ink)] hover:bg-[var(--color-mango)] hover:text-[var(--color-ink)] border-2 border-[var(--color-ink)] shadow-[3px_3px_0px_rgba(41,35,47,0.35)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-paper)]"
+                whileHover={shouldReduceMotion ? undefined : tactileButton.hover}
+                whileTap={shouldReduceMotion ? undefined : tactileButton.tap}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-mono font-bold tracking-wide uppercase text-[var(--color-paper)] bg-[var(--color-ink)] hover:bg-[var(--color-mango)] hover:text-[var(--color-ink)] border-2 border-[var(--color-ink)] shadow-[3px_3px_0px_rgba(41,35,47,0.35)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-paper)]"
               >
                 <span>Explore Flagship Systems</span>
                 <ArrowDown size={14} />
@@ -193,9 +204,9 @@ export default function Hero() {
 
               <motion.button
                 onClick={() => handleScroll("#journal")}
-                whileHover={shouldReduceMotion ? undefined : { y: -2 }}
-                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-mono font-bold text-[var(--color-ink)] bg-[var(--color-pistachio)] hover:bg-[var(--color-mango)] border-2 border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
+                whileHover={shouldReduceMotion ? undefined : tactileButton.hover}
+                whileTap={shouldReduceMotion ? undefined : tactileButton.tap}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-mono font-bold text-[var(--color-ink)] bg-[var(--color-pistachio)] hover:bg-[var(--color-mango)] border-2 border-[var(--color-ink)] shadow-[2px_2px_0px_var(--color-ink)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-ink)]"
               >
                 <span>Decision Journal</span>
                 <ArrowUpRight size={14} className="text-[var(--color-ink)]" />
@@ -317,18 +328,18 @@ export default function Hero() {
 
             {/* LAYER 2: The Monograph Archival Plate (Tactile Blackberry Ink Specimen) */}
             <motion.div
+              variants={shouldReduceMotion ? undefined : specimenPlateVariants}
+              initial={shouldReduceMotion ? undefined : "hidden"}
+              animate={shouldReduceMotion ? undefined : "visible"}
+              custom={0.2}
               style={
                 shouldReduceMotion
                   ? undefined
                   : {
                       x: mousePos.x * -5,
                       y: mousePos.y * -5,
-                      rotate: -1.5,
                     }
               }
-              initial={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.96 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.75, delay: 0.2, ease: easeEditorial }}
               className="relative z-10 w-full max-w-sm sm:max-w-md bg-[var(--color-ink)] text-[var(--color-paper)] p-4 sm:p-5 rounded-2xl border-2 border-[var(--color-ink)] shadow-[6px_6px_0px_rgba(41,35,47,0.38)]"
             >
               {/* Card Header: Archival Specimen Folio Strip */}
