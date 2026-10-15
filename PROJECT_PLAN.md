@@ -596,7 +596,67 @@ graph TD
   - `node ./node_modules/next/dist/bin/next build`: Passed (clean production build).
   - Browser subagent visual evaluation: Passed across 1536x864, 1024x768, 390x844, 320x568 viewports with screenshot capture and zero horizontal scroll.
 - **Status**: **Completed (Stage 2.2)**.
+- **Commit**: `bc9fdad`.
 - **Stage 3 Boundary**: Stage 3 remains unauthorized and has not started. All project case studies and verification statuses remain strictly untouched.
+
+---
+
+### Stage 2.3: Visual Audit, Art Direction Refinement & Final Homepage Polish
+- **Objective**: Conduct a comprehensive, critical visual audit of the rendered Tropical Anomaly homepage across multiple desktop, tablet, and mobile viewports, identify remaining aesthetic and spatial weaknesses (such as lingering dashboard/notebook panels and viewport clipping), and execute targeted, high-craft art direction polish.
+- **Visual Audit Findings (Evaluation Against the 10 Authoritative Questions)**:
+  1. *Unmistakable Visual Focal Point*:
+     - *Pre-refinement*: Eye was split between colossal headline and an oversized, crowded monograph card whose bottom half was awkwardly clipped on 1536x864 desktop viewports.
+     - *Post-refinement*: Created an integrated, balanced horizon where the colossal Newsreader headline and the calibrated cryptographic wafer + monograph plate form a single, coherent focal composition fully visible above the fold.
+  2. *Headline Integration*:
+     - *Pre-refinement*: Headline behaved like a conventional 2-column text wall pushing narrative and action buttons off-screen.
+     - *Post-refinement*: Calibrated display serif leading (`leading-[0.85]`), tracking, and scale shifts (`text-5xl sm:text-6xl md:text-[4.2rem] lg:text-[5.2rem] xl:text-[6.2rem]`), locking naturally with the Sour Pistachio ribbon and the tactile specimen plate.
+  3. *Hero Sculpture*:
+     - *Pre-refinement*: Concentric dashed circles and crosshairs felt like a generic CAD/radar blueprint or HUD widget.
+     - *Post-refinement*: Redesigned as an art-directed physical-digital relic (the Cryptographic State Wafer) with heavy outer caliper tracks, cardinal alignment beads in signature palette tones, an inner geodetic octagonal lattice, and a central invariant state core.
+  4. *Monograph Card*:
+     - *Pre-refinement*: 3 nested rounded boxes (`p-3 rounded-xl bg-[rgba(255,240,216,0.06)]`) with icons recreated the rigid notebook/dashboard panel aesthetic in dark mode.
+     - *Post-refinement*: Completely dismantled the nested boxes. Replaced with an archival specimen plate with a clean 3-tier typographic layout, delicate hairlines, an italic Newsreader axiom footnote, and an overlapping physical tape badge (`VERIFIED PROOF`).
+  5. *Colour Palette Composition*:
+     - *Pre-refinement*: Small accent badges of multiple colors caused confetti scattering.
+     - *Post-refinement*: Strong compositional discipline: Guava Punch (`#FF5B4D`) as dominant canvas, Blackberry Ink (`#29232F`) as structural ink, Peach Paper (`#FFF0D8`) as negative space, and deliberate Sour Pistachio (`#D9EF68`) and Mango Static (`#F5BC45`) focal interruptions.
+  6. *Masthead Integration*:
+     - *Pre-refinement*: Standard boxed header sitting above the hero.
+     - *Post-refinement*: Seamlessly integrated typographic wordmark and micro-badging that flows directly into the Guava Punch canvas when unscrolled, transitioning smoothly to blurred Peach Paper on scroll.
+  7. *First Viewport Completeness across Viewports*:
+     - *Pre-refinement*: 1536x864 clipped the card and pushed CTAs below the fold; 1024x768 stacked the card 800px down; 320x568 crowded the buttons.
+     - *Post-refinement*: Calibrated vertical padding (`pt-20 sm:pt-24 pb-12 md:pb-16`) and content proportions so that on 1536x864 and 1024x768, the headline, narrative, CTA buttons, and graphic assemblage are 100% visible in the first viewport. On 390px and 320px mobile screens, buttons stack full-width (`w-full sm:w-auto`) with 44px touch targets and zero overflow.
+  8. *Downstream Continuity*:
+     - *Pre-refinement*: A clunky bottom banner (`CONTINUE JOURNEY · SECTION 01 // HOW I THINK`) cut the page abruptly.
+     - *Post-refinement*: Removed redundant journey banner. Replaced with an architectural boundary cut leading directly into the open typographic triptych of Section 01 (`#philosophy`).
+  9. *Static Memorability (Reduced Motion)*:
+     - *Pre-refinement*: Without rotation, the wafer felt like a static compass wireframe.
+     - *Post-refinement*: The multi-layered geometry, graphic chromatic fills, drop-shadow depth, and tactile physical plate feel like a rich, tangible poster even with all motion disabled.
+  10. *Redundancies & Clutter Eliminated*:
+     - Removed redundant position chips and journey labels.
+     - Dismantled nested boxes in the monograph card.
+     - Simplified competing CAD dashed lines into bold caliper tracks.
+- **Files Actually Changed**:
+  - `src/components/sections/Hero.tsx`
+  - `PROJECT_PLAN.md`
+- **Acceptance Criteria**:
+  - [x] Full visual audit conducted against the 10 core questions with real browser screenshots.
+  - [x] Hero proportions calibrated so headline, narrative, CTA suite, and monograph card fit above the fold at 1536x864 and 1024x768.
+  - [x] Generic CAD radar wafer replaced with sculptural Cryptographic State Wafer.
+  - [x] Monograph card dismantled from 3-box dashboard to clean typographic archival plate.
+  - [x] Mobile viewports (390x844 and 320x568) tested with full-width tactile touch targets and zero overflow.
+  - [x] Redundant bottom transition banner removed; clean architectural horizon into Section 01 implemented.
+  - [x] WCAG 2.2 AA / AAA contrast verified.
+  - [x] Full `prefers-reduced-motion` compliance preserved.
+- **Verification Commands Executed**:
+  - `npm run test:content`: Passed (0 failures).
+  - `npx tsc --noEmit`: Passed (0 type errors).
+  - `npm run lint`: Passed (0 warnings, 0 errors).
+  - `node scripts/verify-contrast.mjs`: Passed (all contrast pairs verified).
+  - `npm run build`: Passed (clean production build, all routes prerendered).
+  - Browser subagent visual evaluation: Passed across 1536x864, 1024x768, 390x844, 320x568 viewports with screenshot capture.
+- **Status**: **Completed (Stage 2.3)**.
+- **Commit**: `f9d0b7d`.
+- **Stage 3 Boundary**: Stage 3 remains strictly unauthorized and has not started.
 
 ---
 
@@ -757,24 +817,25 @@ The active portfolio repository is an independent, original work:
 | **Stage 1.1** | Contrast Correction & Plan Synchronization | **Completed (Remediation)** | 2026-10-14 | `6687f47` |
 | **Stage 2** | Tropical Anomaly Design System & Hero | **Completed (Verified)** | 2026-10-14 | `871b680` |
 | **Stage 2.1** | Living Motion & Spatial Composition | **Completed (Verified)** | 2026-10-14 | `e98f744` |
-| **Stage 2.2** | Experimental Art Direction & Immersive Transformation | **Completed (Verified)** | 2026-10-14 | Pending Commit |
+| **Stage 2.2** | Experimental Art Direction & Immersive Transformation | **Completed (Verified)** | 2026-10-14 | `bc9fdad` |
+| **Stage 2.3** | Visual Audit, Art Direction Refinement & Final Homepage Polish | **Completed (Verified)** | 2026-10-15 | `f9d0b7d` |
 | **Stage 3** | Flagship Systems & Case Studies | **Preconditions Ready; Awaiting Authorization** | — | — |
 | **Stage 4** | Decision Journal & Analytical Essays | Blocked by Stage 3 | — | — |
 | **Stage 5** | Academic Trajectory & Verified Contact | Blocked by Stage 4 | — | — |
 | **Stage 6** | Comprehensive Verification & Audit | Blocked by Stage 5 | — | — |
 
 ### 12.2 Readiness Determination
-- **Stage 2.2 Status**: **STAGE 2.2 COMPLETE AND VERIFIED**.
+- **Stage 2.3 Status**: **STAGE 2.3 COMPLETE AND VERIFIED**.
 - **Evidence**:
-  - Full-bleed Guava Punch (`#FF5B4D`) canvas deployed with colossal Newsreader typography and Sour Pistachio highlight slab.
-  - Rigid 3-row panel dismantled and replaced with kinetic rotating cryptographic wafer and tilted monograph card (`#29232F` background, `#FFF0D8` text with 13.60:1 AAA contrast).
-  - Nav blends seamlessly into Guava Punch when unscrolled, transitioning into backdrop-blurred Peach Paper on scroll.
-  - Verified positioning (BTech CSE Cybersecurity + IIT Madras BS in Data Science) strictly preserved with zero fabricated metrics or unverified claims.
-  - Browser subagent automated visual verification completed across all four target viewports (1536x864, 1024x768, 390x844, 320x568) with zero horizontal overflow.
-  - Content validation suite `scripts/validate-content.mjs` passed with 0 failures (`npm run test:content`).
-  - TypeScript compiler (`tsc --noEmit`) and ESLint (`npm run lint`) passed with 0 errors and 0 warnings.
-  - Contrast audit (`node scripts/verify-contrast.mjs`) passed with full WCAG 2.2 AA / AAA compliance.
-  - Production build (`npm run build`) succeeded with 0 errors.
+  - Full critical visual audit conducted against the 10 core questions using real rendered browser sessions across 4 viewports (1536x864, 1024x768, 390x844, 320x568).
+  - First-viewport balance calibrated so colossal Newsreader headline, narrative lead, full CTA button suite, and the physical-digital assemblage (Cryptographic State Wafer + Archival Specimen Plate) all comfortably reside above the fold without clipping on desktop and tablet.
+  - Tilted monograph card dismantled from a 3-box dashboard panel into a museum-grade typographic dossier with zero nested boxes, delicate hairlines, Newsreader axiom footnote, and overlapping physical tape badge (`VERIFIED PROOF`).
+  - Cryptographic wafer refined from a generic CAD/radar wireframe into an art-directed mechanical-cryptographic talisman with outer caliper track, cardinal alignment beads, counter-rotating geodetic lattice, and central invariant state core.
+  - Mobile action buttons stack cleanly with full-width confident touch targets (`w-full sm:w-auto`) and zero overflow down to 320px narrow mobile screens.
+  - Clunky bottom transition banner removed in favor of a clean, architectural horizon into Section 01 (`Philosophy`).
+  - Full `prefers-reduced-motion` compliance preserved; zero reliance on animation for content visibility.
+  - Verification suite: `npm run test:content` (0 failures), `npx tsc --noEmit` (0 errors), `npm run lint` (0 errors), `node scripts/verify-contrast.mjs` (all pairs verified), `npm run build` (clean production build, all static routes prerendered).
 
 ### 12.3 Recommended Immediate Next Action
-Await user review and authorization for **Stage 3: Flagship Systems & Engineering Case Studies**, preceded by independent verification of TaxFlow and Cyber Crime Analytics repositories.
+Await user review and authorization for **Stage 3: Flagship Systems & Engineering Case Studies**, preceded by independent verification of TaxFlow and Cyber Crime Analytics repositories. Stage 3 remains strictly unauthorized.
+
